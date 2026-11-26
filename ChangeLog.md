@@ -24,3 +24,4 @@
 - Record cards: card panel, field tables, side by side panels and photo, as in the modern theme.
 - Field widths are a share of the screen, the same for every field; tablet and phone layouts for forms.
 - Tablets and phones: one row top bar, left menu as a drawer.
+- Tablets and phones: the modules of the top bar open in a sheet from the bottom, by a button titled "Modules".

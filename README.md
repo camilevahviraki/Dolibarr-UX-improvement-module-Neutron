@@ -26,6 +26,7 @@ htdocs/custom/neutron/
 │       │   ├── topbar.css.php        top bar, login block, menu toggle
 │       │   ├── sidebar.css.php       left menu, icon bar, hover preview, search box
 │       │   ├── topbar-small-screens.css.php   top bar of tablets and phones
+│       │   ├── modules-sheet.css.php          their top bar entries, in a sheet from the bottom
 │       │   ├── sidebar-small-screens.css.php  left menu drawer of tablets and phones
 │       │   ├── titles.css.php        page and section titles
 │       │   ├── tabs.css.php          tabs
@@ -59,7 +60,8 @@ htdocs/custom/neutron/
 │   ├── shared-menu-helpers.js        functions shared by the menu scripts
 │   ├── highlight-current-page.js     highlight of the current page
 │   ├── collapsible-sections.js       section arrows and sub entries
-│   └── sidebar-open-close.js         open, icon bar, hover preview, saved state, drawer
+│   ├── sidebar-open-close.js         open, icon bar, hover preview, saved state, drawer
+│   └── modules-sheet.js              tablets and phones: modules in a sheet from the bottom
 ├── fonts/                            Poppins and its license
 ├── img/                              images of the module
 ├── admin/
