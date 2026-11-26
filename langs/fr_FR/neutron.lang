@@ -3,3 +3,11 @@ ModuleNeutronName = Neutron
 ModuleNeutronDesc = Thème Neutron et améliorations de l'interface
 NeutronSetup = Configuration de Neutron
 NeutronSetupIntro = Aucune option pour le moment. Choisissez le thème "neutron" dans Configuration - Affichage - Thème.
+
+# Menu de gauche
+NeutronMenuClosedTip = Menu réduit : survoler pour l'aperçu, cliquer pour le garder ouvert
+NeutronMenuOpenTip = Cliquer pour réduire le menu en icônes
+
+# Barre du haut des tablettes et téléphones
+NeutronModules = Modules
+NeutronShowModules = Afficher tous les modules
