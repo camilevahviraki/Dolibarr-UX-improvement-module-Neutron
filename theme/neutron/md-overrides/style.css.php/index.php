@@ -14,6 +14,7 @@ include __DIR__.'/fonts.css.php';
 include __DIR__.'/topbar.css.php';
 include __DIR__.'/sidebar.css.php';
 include __DIR__.'/topbar-small-screens.css.php';
+include __DIR__.'/modules-sheet.css.php';
 include __DIR__.'/sidebar-small-screens.css.php';
 include __DIR__.'/titles.css.php';
 include __DIR__.'/tabs.css.php';
