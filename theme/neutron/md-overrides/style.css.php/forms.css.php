@@ -11,7 +11,10 @@ $neutronsmall = ':not(.maxwidthdate, .maxwidth50, .maxwidth75, .maxwidth100)';
 // Text-like controls of the forms
 $neutrontext = 'input[type=text], input[type=email], input[type=url], input[type=password], input[type=tel], input:not([type]), span.select2-container';
 $neutroncontrols = $neutrontext.', select:not(.select2-hidden-accessible)';
-$neutronfield = 'min(calc(var(--n-field-w) - var(--n-icon-w)), calc(100% - var(--n-icon-w)))';
+$neutronfield = 'calc(var(--n-field-w) - var(--n-icon-w))'; // a share of the screen
+// on tablets and phones: a share of the cell, which keeps room at the end for a help picture
+$neutronfill = 'calc(100% - var(--n-icon-w) - 8px)'; // field without icon
+$neutronfillicon = 'calc(100% - 2 * var(--n-icon-w) - 8px)'; // field after an icon
 $neutrontextcontrols = 'textarea, div.cke, .cke_chrome, .cke_inner, .mce-tinymce, .tox-tinymce';
 ?>
 
@@ -147,10 +150,11 @@ html body table.border > tbody > tr > td:nth-child(2) { color: var(--n-ink); fon
 html body table.border td { padding-top: 6px; padding-bottom: 6px; }
 
 /* ---------- Forms: one width, and one left edge for every control ---------- */
+/* The width is definite (no max-width in %), so that a narrow cell cannot shrink one field and not the others */
 html body table.border td :is(<?php print $neutroncontrols; ?>):where(<?php print $neutronsized.$neutronsmall; ?>) {
 	box-sizing: border-box;
 	width: <?php print $neutronfield; ?> !important;
-	max-width: 100% !important; min-width: 0 !important;
+	max-width: none !important; min-width: 0 !important;
 }
 html body table.border td span.select2-container .select2-selection { width: 100% !important; max-width: none !important; min-width: 0 !important; }
 /* a field after its icon: the icon is part of the width, so that right edges line up */
@@ -168,7 +172,7 @@ html body table.border td > :is(input[type=checkbox], input[type=radio]) { margi
 /* text areas and text editors share one width */
 html body table.border td :is(<?php print $neutrontextcontrols; ?>) {
 	box-sizing: border-box;
-	width: min(var(--n-area-w), 100%) !important;
+	width: var(--n-area-w) !important;
 	max-width: 100% !important;
 	margin-left: 0 !important;
 }
@@ -188,13 +192,51 @@ html body img.ui-datepicker-trigger:hover { background-color: var(--n-accent); }
 /* ---------- Date ranges: the two dates take the width of one field ---------- */
 html body table.border td:has(.divfordateinput ~ .divfordateinput) .divfordateinput {
 	display: inline-flex !important; align-items: center; gap: 6px; vertical-align: middle;
-	width: calc((min(var(--n-field-w) - var(--n-icon-w), 100% - var(--n-icon-w)) - 10px) / 2);
+	width: calc((var(--n-field-w) - var(--n-icon-w) - 10px) / 2);
 }
 html body table.border td:has(.divfordateinput ~ .divfordateinput) .divfordateinput input.hasDatepicker { flex: 1 1 auto; min-width: 0; width: 100% !important; max-width: none !important; }
 html body table.border td:has(.divfordateinput ~ .divfordateinput) .divfordateinput img.ui-datepicker-trigger { flex: 0 0 auto; }
 
-/* ---------- Narrow screens ---------- */
-@media (max-width: 768px) {
-	html body table.border td :is(input:not([type=checkbox], [type=radio], [type=submit], [type=button], .hasDatepicker), select:not(.select2-hidden-accessible), span.select2-container, textarea, div.cke) { max-width: 100% !important; }
-	html body table.border > tbody > tr > td:first-child:not([colspan]) { width: 38% !important; }
+<?php
+// A table that holds a form (the tables of a record view keep their two columns)
+$neutronform = 'html body table.border:not(.tableforfield):has(input, select, textarea)';
+$neutronrow = $neutronform.' > tbody > tr:not(.hideobject, .hidden, .nodisplay)';
+?>
+/* ---------- Tablets: one label and its field per line, in shares of the width ---------- */
+@media (max-width: 1200px) {
+	<?php print $neutronform; ?>, <?php print $neutronform; ?> > tbody { display: block; box-sizing: border-box; width: 100% !important; }
+	<?php print $neutronrow; ?> { display: flex; flex-wrap: wrap; align-items: center; height: auto !important; }
+	<?php print $neutronrow; ?> > td {
+		/* !important: Dolibarr gives widths to the cells */
+		box-sizing: border-box; flex: 0 0 65%; width: auto !important; max-width: 65%; min-width: 0 !important;
+		height: auto !important; /* !important: md gives every line the same height */
+		border-bottom: 0 !important;
+	}
+	<?php print $neutronrow; ?> > td:nth-child(odd) { flex-basis: 35%; max-width: 35%; }
+	<?php print $neutronrow; ?> > td:only-child { flex-basis: 100%; max-width: 100%; }
+	/* the second label of a line looks like the first one */
+	<?php print $neutronrow; ?> > td:nth-child(3) { color: var(--n-ink-2); font-size: 13px; font-weight: 600; }
+
+	/* without icon, a field fills its cell: the padding of the cell already holds the room of the icon */
+	<?php print $neutronrow; ?> > td :is(<?php print $neutroncontrols; ?>):where(<?php print $neutronsized.$neutronsmall; ?>),
+	<?php print $neutronrow; ?> > td :is(<?php print $neutrontextcontrols; ?>) {
+		width: <?php print $neutronfill; ?> !important; max-width: 100% !important;
+	}
+	<?php print $neutronrow; ?> > td:has(.pictofixedwidth) :is(<?php print $neutroncontrols; ?>):where(<?php print $neutronsized.$neutronsmall; ?>),
+	<?php print $neutronrow; ?> > td .pictofixedwidth ~ :is(<?php print $neutroncontrols; ?>):where(<?php print $neutronsized; ?>) {
+		width: <?php print $neutronfillicon; ?> !important; max-width: 100% !important;
+	}
+	/* a field laid out in a small table, with its help picture: the table takes the cell */
+	<?php print $neutronrow; ?> > td table:has(input, select) { width: 100%; }
+	<?php print $neutronrow; ?> > td table td:first-child:has(input, select) { width: 100%; }
+	<?php print $neutronrow; ?> > td :is(div.cke .cke_inner, div.cke .cke_contents, iframe) { width: 100% !important; max-width: 100% !important; }
+	<?php print $neutronrow; ?> > td:has(.divfordateinput ~ .divfordateinput) .divfordateinput { width: calc((100% - 10px) / 2); }
+}
+
+/* ---------- Phones: the field goes under its label, on the full width ---------- */
+@media (max-width: 600px) {
+	<?php print $neutronrow; ?> > td, <?php print $neutronrow; ?> > td:nth-child(odd) { flex-basis: 100%; max-width: 100%; }
+	<?php print $neutronrow; ?> > td:nth-child(odd) { padding-bottom: 0; }
+	<?php print $neutronrow; ?> > td:nth-child(even) { padding-top: 4px; }
+	html body div.tabBar { padding: 12px 8px; }
 }
