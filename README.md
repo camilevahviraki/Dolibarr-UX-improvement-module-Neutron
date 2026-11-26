@@ -53,10 +53,10 @@ htdocs/custom/neutron/
 ├── css/
 │   └── settings.css.php              new in Neutron, overrides nothing
 ├── js/menu/
-│   ├── common.js                     shared functions
-│   ├── current.js                    highlight of the current page
-│   ├── groups.js                     section arrows and sub entries
-│   └── toggle.js                     icon bar, hover preview, saved state
+│   ├── shared-menu-helpers.js        functions shared by the menu scripts
+│   ├── highlight-current-page.js     highlight of the current page
+│   ├── collapsible-sections.js       section arrows and sub entries
+│   └── sidebar-open-close.js         open, icon bar, hover preview, saved state
 ├── fonts/                            Poppins and its license
 ├── img/                              images of the module
 ├── admin/
@@ -108,6 +108,7 @@ as long as nothing of `eldy` is overridden.
 - Use `!important` only where `md` leaves no other way, with a comment saying why.
 - Dark rules go in the `dark.css.php` of the same folder.
 - Each file starts with a header: its path, what it contains and which `md` file it overrides.
+- File names say what the file does (`highlight-current-page.js`, not `current.js`).
 
 ## Adding something
 
