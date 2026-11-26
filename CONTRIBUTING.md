@@ -18,7 +18,6 @@ expected and what you see. A screenshot helps: hide personal and company data fi
 
 - One branch per feature, named `feature/<name>`, started from `master`.
 - If your work needs a branch that is not merged yet, start from it and say so in the pull request.
-- Never commit directly on `master`.
 
 ## Commits
 
@@ -29,7 +28,6 @@ expected and what you see. A screenshot helps: hide personal and company data fi
 
 ## Code
 
-- Never edit a Dolibarr core file. Everything stays in this module.
 - Follow the [Dolibarr development rules](https://wiki.dolibarr.org/index.php/Language_and_development_rules).
 - Each file starts with a header: its path and what it contains.
 - Keep one concern per file, with a name that says what it does.
