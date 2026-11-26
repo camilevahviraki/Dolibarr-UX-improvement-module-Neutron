@@ -47,9 +47,11 @@ class modNeutron extends DolibarrModules
 			// Loaded on every page, in this order. Each script runs only with the neutron theme.
 			'js' => array(
 				'/neutron/js/menu/shared-menu-helpers.js',
+				'/neutron/js/menu/translations.js.php',
 				'/neutron/js/menu/highlight-current-page.js',
 				'/neutron/js/menu/collapsible-sections.js',
 				'/neutron/js/menu/sidebar-open-close.js',
+				'/neutron/js/menu/modules-sheet.js',
 			),
 		);
 

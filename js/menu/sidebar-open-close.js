@@ -1,7 +1,9 @@
 /**
  * \file       htdocs/custom/neutron/js/menu/sidebar-open-close.js
- * \brief      Open menu, icon bar, hover preview, tooltips and saved state (computers only).
+ * \brief      Open and closed menu. Computers: icon bar, hover preview, tooltips and saved state.
+ *             Tablets and phones: drawer over the page.
  *
+ * On computers:
  * - The menu is open by default. A click on the toggle opens it or reduces it to an icon bar; the choice is
  *   kept in localStorage as "true" (open) or "false" (closed).
  * - Hovering the toggle while closed grows the menu over the page and the top bar (the content does not move),
@@ -9,6 +11,7 @@
  * - Hovering an icon of the bar shows the name of its section. Clicking it opens the menu over the page, with
  *   that section highlighted and the only one unfolded, until a click outside or the Escape key. Not saved.
  * - Hovering the toggle shows what it does.
+ * On tablets and phones the drawer is closed on each page; a tap outside of it or the Escape key closes it.
  */
 (function () {
 	'use strict';
@@ -19,24 +22,53 @@
 	}
 
 	var OPEN = 'neutron_menu_open';
-	// Texts of the toggle tooltip. TODO Take them from langs/ (a static script receives no translation).
-	var TEXTS = {
-		en: { closed: 'Menu hidden: hover to preview, click to keep it open', open: 'Click to reduce the menu to icons' },
-		fr: { closed: 'Menu réduit : survoler pour l’aperçu, cliquer pour le garder ouvert', open: 'Cliquer pour réduire le menu en icônes' }
-	};
+
+	// Computers: the saved state, open by default (the website editor stays closed). Smaller screens: closed.
+	function applyState() {
+		if (!N.desktop.matches) {
+			document.body.classList.add(N.CLOSED);
+		} else if (!/\/website\//.test(window.location.pathname)) {
+			document.body.classList.toggle(N.CLOSED, N.local.get(OPEN) === 'false');
+		}
+	}
 
 	// Dolibarr closes the menu of themes other than md on each page. This script runs in <head>: apply the
-	// saved state as soon as <body> exists, so that the menu does not flash. The website editor stays closed.
+	// state as soon as <body> exists, so that the menu does not flash.
 	function restoreState() {
-		if (!N.desktop.matches || /\/website\//.test(window.location.pathname)) {
-			return;
-		}
 		new MutationObserver(function (changes, observer) {
 			if (document.body) {
-				document.body.classList.toggle(N.CLOSED, N.local.get(OPEN) === 'false');
+				applyState();
 				observer.disconnect();
 			}
 		}).observe(document.documentElement, { childList: true });
+	}
+
+	function setupDrawer(menu) {
+		var body = document.body;
+
+		function close() {
+			body.classList.add(N.CLOSED);
+		}
+
+		document.addEventListener('click', function (ev) {
+			// The search list of the menu is drawn outside of it
+			if (!N.desktop.matches && !body.classList.contains(N.CLOSED) &&
+					!menu.contains(ev.target) && !ev.target.closest('li.menuhider, .select2-container')) {
+				close();
+			}
+		});
+
+		document.addEventListener('keydown', function (ev) {
+			if (ev.key === 'Escape' && !N.desktop.matches) {
+				close();
+			}
+		});
+
+		// The window crosses the width limit: end any preview, then take the state of the new size
+		N.desktop.addEventListener('change', function () {
+			body.classList.remove(N.PEEK);
+			applyState();
+		});
 	}
 
 	// A small label beside an element, drawn in <body> so that the menu does not clip it
@@ -161,14 +193,17 @@
 
 		// Capture phase: runs before the Dolibarr handler that toggles the class
 		document.addEventListener('click', function (ev) {
-			if (!N.desktop.matches || !ev.target.closest('li.menuhider')) {
+			if (!ev.target.closest('li.menuhider')) {
 				return;
 			}
 			ev.preventDefault();
 			endPreview();
-			window.setTimeout(function () {
-				N.local.set(OPEN, body.classList.contains(N.CLOSED) ? 'false' : 'true');
-			}, 0);
+			// The choice made on a computer is kept; the drawer is not
+			if (N.desktop.matches) {
+				window.setTimeout(function () {
+					N.local.set(OPEN, body.classList.contains(N.CLOSED) ? 'false' : 'true');
+				}, 0);
+			}
 		}, true);
 	}
 
@@ -210,7 +245,6 @@
 
 	function setupToggleTooltip(toggle) {
 		var tip = null;
-		var texts = TEXTS[document.documentElement.lang.slice(0, 2)] || TEXTS.en;
 
 		function hide() {
 			if (tip) {
@@ -223,7 +257,10 @@
 			hide();
 			if (N.desktop.matches) {
 				var closed = document.body.classList.contains(N.CLOSED);
-				tip = createTip(closed ? texts.closed : texts.open, toggle.getBoundingClientRect().right + 8, toggle);
+				var text = closed ?
+					N.t('menuClosedTip', 'Menu hidden: hover to preview, click to keep it open') :
+					N.t('menuOpenTip', 'Click to reduce the menu to icons');
+				tip = createTip(text, toggle.getBoundingClientRect().right + 8, toggle);
 			}
 		}
 
@@ -242,6 +279,7 @@
 		var toggle = document.querySelector('li.menuhider');
 		var menu = document.querySelector('.side-nav');
 		if (toggle && menu) {
+			setupDrawer(menu);
 			setupToggle(toggle, menu);
 			setupBarTooltips(menu);
 			setupToggleTooltip(toggle);

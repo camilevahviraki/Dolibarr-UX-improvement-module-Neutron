@@ -28,7 +28,7 @@ require_once DOL_DOCUMENT_ROOT.'/core/lib/admin.lib.php';
 require_once __DIR__.'/../lib/neutron.lib.php';
 
 /**
- * @var Tranneutron $langs
+ * @var Translate $langs
  * @var User $user
  */
 

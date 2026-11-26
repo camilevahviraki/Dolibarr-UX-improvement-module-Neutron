@@ -4,7 +4,7 @@
  * \brief      Loads everything that overrides the theme "md".
  *
  * This folder follows the structure of htdocs/theme/md. An md file that is overridden becomes a folder
- * with the same name, split by concern, and its index.php loads those files. See README.md.
+ * with the same name, split by concern, and its index.php loads those files. See docs/styles.md.
  */
 
 if (!defined('DOL_DOCUMENT_ROOT')) {
