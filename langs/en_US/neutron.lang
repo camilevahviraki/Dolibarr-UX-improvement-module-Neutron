@@ -3,3 +3,11 @@ ModuleNeutronName = Neutron
 ModuleNeutronDesc = Neutron theme and interface improvements
 NeutronSetup = Neutron setup
 NeutronSetupIntro = No option yet. Select the theme "neutron" in Setup - Display - Theme.
+
+# Left menu
+NeutronMenuClosedTip = Menu hidden: hover to preview, click to keep it open
+NeutronMenuOpenTip = Click to reduce the menu to icons
+
+# Top bar of tablets and phones
+NeutronModules = Modules
+NeutronShowModules = Show all modules
