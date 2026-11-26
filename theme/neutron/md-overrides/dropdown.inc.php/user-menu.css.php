@@ -1,7 +1,51 @@
 <?php
 /**
  * \file       htdocs/custom/neutron/theme/neutron/md-overrides/dropdown.inc.php/user-menu.css.php
- * \brief      User menu of the top bar and its buttons.
+ * \brief      Menu of the user, at the right of the top bar: centred information and three buttons.
  *             Overrides htdocs/theme/md/dropdown.inc.php.
  */
 ?>
+
+html body #topmenu-login-dropdown .dropdown-menu {
+	padding: 0;
+	overflow: hidden;
+	background: var(--n-surface);
+	border-color: var(--n-border);
+	border-radius: var(--n-radius);
+	box-shadow: var(--n-shadow-lg);
+	line-height: 1.5;
+}
+/* !important: md colors the content of this menu with !important in places */
+html body #topmenu-login-dropdown .dropdown-menu :is(div, p, span, small, b, i, u, a) { color: var(--n-ink) !important; }
+
+html body #topmenu-login-dropdown .dropdown-menu .user-header { background: var(--n-surface-2); text-align: center; }
+html body #topmenu-login-dropdown .dropdown-menu .user-body { padding: 10px 16px; background: var(--n-surface); text-align: center; }
+/* "Show company infos" and "Show more infos" */
+html body #topmenu-login-dropdown .user-body > span { display: flex; align-items: center; justify-content: center; gap: 6px; min-height: 36px; text-align: center; }
+
+/* ---------- Buttons: card, virtual card, logout ---------- */
+html body #topmenu-login-dropdown .user-footer {
+	display: flex; align-items: center; gap: 8px;
+	padding: 12px 14px;
+	background: var(--n-surface-2);
+	border-top: 1px solid var(--n-border);
+}
+html body #topmenu-login-dropdown .user-footer .clearboth { display: none; }
+html body #topmenu-login-dropdown .user-footer :is(.pull-left, .pull-right) { float: none; display: flex; flex: 1 1 0; margin: 0; }
+html body #topmenu-login-dropdown .user-footer .pull-left:nth-of-type(2) { flex: 0 0 40px; }
+html body #topmenu-login-dropdown .user-footer a {
+	display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+	width: 100%; height: 36px; margin: 0; padding: 0 12px;
+	background: var(--n-surface);
+	border: 1px solid var(--n-border-strong);
+	border-radius: var(--n-radius-sm);
+	box-shadow: none;
+	font-size: 13px; font-weight: 500; line-height: 1; text-decoration: none;
+}
+html body #topmenu-login-dropdown .user-footer .pull-left:nth-of-type(2) a { padding: 0; }
+html body #topmenu-login-dropdown .user-footer a :is(i, span) { margin: 0; padding: 0; line-height: 1; }
+html body #topmenu-login-dropdown .user-footer a:hover { background: var(--n-accent-soft); border-color: var(--n-accent-ring); }
+html body #topmenu-login-dropdown .user-footer a:hover :is(i, span), html body #topmenu-login-dropdown .user-footer a:hover { color: var(--n-accent-strong) !important; }
+/* Logout */
+html body #topmenu-login-dropdown .user-footer .pull-right a, html body #topmenu-login-dropdown .user-footer .pull-right a :is(i, span) { color: var(--n-danger) !important; }
+html body #topmenu-login-dropdown .user-footer .pull-right a:hover { background: var(--n-err-bg); border-color: color-mix(in srgb, var(--n-danger) 30%, transparent); }
