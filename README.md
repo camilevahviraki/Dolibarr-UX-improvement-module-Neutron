@@ -21,13 +21,15 @@ Neutron is free and open source software, under the [GNU GPL v3 or later](#licen
 
 ### Computer
 
-![Third party card on a computer, with the left menu open](docs/screenshots/computer-record-card.jpg)
+![Third party card on a computer, with the modules in the top bar and the left menu open](docs/screenshots/computer-record-card.jpg)
 
-### Tablet and phone
+### Tablet
 
-| Tablet: create form | Phone: modules |
-| --- | --- |
-| <img src="docs/screenshots/tablet-form.png" alt="New event form on a tablet" width="440"> | <img src="docs/screenshots/phone-modules.png" alt="Modules sheet open from the bottom on a phone" width="230"> |
+<img src="docs/screenshots/tablet-modules.png" alt="Third party card on a tablet, with the modules open" width="500">
+
+### Phone
+
+<img src="docs/screenshots/phone-modules.png" alt="Third party card on a phone, with the modules open" width="280">
 
 ## Requirements
 
