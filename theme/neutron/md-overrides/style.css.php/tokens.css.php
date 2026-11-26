@@ -17,6 +17,12 @@ foreach (neutronColors() as $neutronname => $neutroncolor) {
 	--n-accent-ring: color-mix(in srgb, var(--n-accent) 22%, transparent);
 	--n-top-active-text: color-mix(in srgb, var(--n-active) 75%, white);
 
+	/* Top bar: same texts as the left menu */
+	--n-bar-text: var(--n-side-strong);
+	--n-bar-icon: var(--n-side-icon);
+	--n-bar-hover: var(--n-side-hover);
+	--n-shadow-bar: 0 1px 0 rgba(255,255,255,.06), 0 4px 16px rgba(15,23,42,.18);
+
 	/* Sizes */
 	--n-radius: 12px;
 	--n-radius-sm: 8px;
