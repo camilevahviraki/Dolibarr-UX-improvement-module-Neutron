@@ -58,6 +58,7 @@ htdocs/custom/neutron/
 │   └── theme-images.css.php          images Dolibarr looks for outside of the module
 ├── js/menu/
 │   ├── shared-menu-helpers.js        functions shared by the menu scripts
+│   ├── translations.js.php           texts of the scripts, from langs/
 │   ├── highlight-current-page.js     highlight of the current page
 │   ├── collapsible-sections.js       section arrows and sub entries
 │   ├── sidebar-open-close.js         open, icon bar, hover preview, saved state, drawer
@@ -113,6 +114,7 @@ as long as nothing of `eldy` is overridden.
 - Use `!important` only where `md` leaves no other way, with a comment saying why.
 - Dark rules go in the `dark.css.php` of the same folder.
 - Each file starts with a header: its path, what it contains and which `md` file it overrides.
+- Texts shown to the user go in `langs/` (`en_US` and `fr_FR`), never in a script or a style.
 - File names say what the file does (`highlight-current-page.js`, not `current.js`).
 
 ## Adding something

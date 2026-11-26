@@ -22,11 +22,6 @@
 	}
 
 	var OPEN = 'neutron_menu_open';
-	// Texts of the toggle tooltip. TODO Take them from langs/ (a static script receives no translation).
-	var TEXTS = {
-		en: { closed: 'Menu hidden: hover to preview, click to keep it open', open: 'Click to reduce the menu to icons' },
-		fr: { closed: 'Menu réduit : survoler pour l’aperçu, cliquer pour le garder ouvert', open: 'Cliquer pour réduire le menu en icônes' }
-	};
 
 	// Computers: the saved state, open by default (the website editor stays closed). Smaller screens: closed.
 	function applyState() {
@@ -250,7 +245,6 @@
 
 	function setupToggleTooltip(toggle) {
 		var tip = null;
-		var texts = TEXTS[document.documentElement.lang.slice(0, 2)] || TEXTS.en;
 
 		function hide() {
 			if (tip) {
@@ -263,7 +257,10 @@
 			hide();
 			if (N.desktop.matches) {
 				var closed = document.body.classList.contains(N.CLOSED);
-				tip = createTip(closed ? texts.closed : texts.open, toggle.getBoundingClientRect().right + 8, toggle);
+				var text = closed ?
+					N.t('menuClosedTip', 'Menu hidden: hover to preview, click to keep it open') :
+					N.t('menuOpenTip', 'Click to reduce the menu to icons');
+				tip = createTip(text, toggle.getBoundingClientRect().right + 8, toggle);
 			}
 		}
 
