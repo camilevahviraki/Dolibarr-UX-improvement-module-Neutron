@@ -12,3 +12,4 @@
 - Top bar and user menu styles.
 - Left menu styles: full height column, icon bar, current page, hover preview (behaviours need the scripts).
 - Left menu scripts, with explicit file names.
+- Tab styles.
