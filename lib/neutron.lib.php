@@ -14,6 +14,98 @@
  */
 
 /**
+ * Default colors of the theme. The name of a color gives its CSS variable ("side_bg" gives --n-side-bg)
+ * and the constant that replaces it (NEUTRON_COLOR_SIDE_BG).
+ *
+ * @return array<string,string>
+ */
+function neutronDefaultColors()
+{
+	return array(
+		// Brand: buttons, links and focus
+		'accent' => '#4f46e5',
+		'link' => '#4338ca',
+		// Dark slate shared by the top bar and the left menu
+		'bar' => '#384547',
+		'side_bg' => '#384547',
+		'side_card' => '#263539',
+		'side_hover' => '#3b4a4c',
+		'side_line' => '#465355',
+		'side_strong' => '#eff5f7',
+		'side_text' => '#aab5b9',
+		'side_icon' => '#c2cacc',
+		'side_muted' => '#8b9798',
+		// Current entry of the menus
+		'active' => '#3082ff',
+		'active_text' => '#ffffff',
+		'top_active' => '#d9dee0',
+		// Page
+		'body' => '#f5f6f8',
+		'surface' => '#ffffff',
+		'surface_2' => '#f8fafc',
+		'surface_3' => '#f1f5f9',
+		'ink' => '#0f172a',
+		'ink_2' => '#334155',
+		'muted' => '#64748b',
+		'border' => '#e2e8f0',
+		'border_strong' => '#cbd5e1',
+		// Titles, table rows and button text
+		'title_text' => '#0f172a',
+		'row_hover' => '#f8fafc',
+		'row_checked' => '#eef2ff',
+		'button_text' => '#ffffff',
+		// States
+		'danger' => '#b91c1c',
+		'ok_bg' => '#f0fdf4',
+		'warn_bg' => '#fffbeb',
+		'err_bg' => '#fef2f2',
+	);
+}
+
+/**
+ * Colors in use: the defaults, replaced by the constants that hold a valid hexadecimal color
+ *
+ * @return array<string,string>
+ */
+function neutronColors()
+{
+	$colors = neutronDefaultColors();
+	foreach ($colors as $name => $default) {
+		$value = getDolGlobalString('NEUTRON_COLOR_'.strtoupper($name));
+		if (preg_match('/^#([0-9a-f]{3}|[0-9a-f]{6})$/i', $value)) {
+			$colors[$name] = $value;
+		}
+	}
+	return $colors;
+}
+
+/**
+ * The color fields of Setup - Display - Theme: for each one, the Neutron color that is its default
+ * and the variables of the md sheet it drives (none yet for the left menu).
+ *
+ * @return array<string,array{0:string,1:string[]}>
+ */
+function neutronThemeFields()
+{
+	return array(
+		'THEME_ELDY_TOPMENU_BACK1' => array('bar', array('--colorbackhmenu1', '--colortopbordertitle1')),
+		'THEME_ELDY_VERMENU_BACK1' => array('side_bg', array()),
+		'THEME_ELDY_BACKBODY' => array('body', array('--colorbackbody')),
+		'THEME_ELDY_TEXTTITLENOTAB' => array('title_text', array('--colortexttitlenotab')),
+		'THEME_ELDY_BACKTITLE1' => array('surface_2', array('--colorbacktitle1')),
+		'THEME_ELDY_TEXTTITLE' => array('title_text', array('--colortexttitle')),
+		'THEME_ELDY_TEXTTITLELINK' => array('title_text', array('--colortexttitlelink')),
+		'THEME_ELDY_LINEIMPAIR1' => array('surface', array('--colorbacklineimpair1', '--colorbacklineimpair2')),
+		'THEME_ELDY_LINEPAIR1' => array('surface', array('--colorbacklinepair1', '--colorbacklinepair2')),
+		'THEME_ELDY_TEXTLINK' => array('link', array('--colortextlink')),
+		'THEME_ELDY_USE_HOVER' => array('row_hover', array('--colorbacklinepairhover')),
+		'THEME_ELDY_USE_CHECKED' => array('row_checked', array('--colorbacklinepairchecked')),
+		'THEME_ELDY_BTNACTION' => array('accent', array('--butactionbg')),
+		'THEME_ELDY_TEXTBTNACTION' => array('button_text', array('--textbutaction')),
+	);
+}
+
+/**
  * Tabs of the setup pages
  *
  * @return array<array{0:string,1:string,2:string}>
