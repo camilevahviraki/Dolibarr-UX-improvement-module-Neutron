@@ -1,7 +1,7 @@
 # Neutron
 
 A modern interface for Dolibarr, as a module: it ships the theme `neutron`, built on the theme `md`, and a few
-scripts for the menus. No core file is changed.
+scripts for the menus.
 
 Neutron is free and open source software, under the [GNU GPL v3 or later](#license). Contributions are welcome.
 
