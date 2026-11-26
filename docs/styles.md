@@ -12,7 +12,6 @@ How Neutron changes the theme `md`. The places of the files are in [structure.md
    `md-overrides/index.php` loads the folders, in the order of `md`.
 5. **Only what is overridden.** No folder for an `md` file that Neutron does not change.
 6. **A rule goes where `md` has the rule it changes.** Not sure where? Search the selector in `htdocs/theme/md`.
-7. **Never edit `htdocs/theme/md`**, nor any other Dolibarr core file.
 
 ## Files of eldy
 
