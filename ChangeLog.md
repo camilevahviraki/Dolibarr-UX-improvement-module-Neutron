@@ -21,3 +21,5 @@
 - Dropdown menus and column selector styled as in the modern theme.
 - Filters above lists: multiple choice lists as high as a field, text centred.
 - Form labels: small and bold, as in the modern theme.
+- Record cards: card panel, field tables, side by side panels and photo, as in the modern theme.
+- Field widths are a share of the screen, the same for every field; tablet and phone layouts for forms.
