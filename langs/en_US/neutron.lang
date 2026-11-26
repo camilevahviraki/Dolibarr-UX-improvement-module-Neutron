@@ -1,0 +1,5 @@
+# Dolibarr language file - module Neutron
+ModuleNeutronName = Neutron
+ModuleNeutronDesc = Neutron theme and interface improvements
+NeutronSetup = Neutron setup
+NeutronSetupIntro = No option yet. Select the theme "neutron" in Setup - Display - Theme.
