@@ -26,3 +26,4 @@
 - Tablets and phones: one row top bar, left menu as a drawer.
 - Tablets and phones: the modules of the top bar open in a sheet from the bottom, by a button titled "Modules".
 - The texts of the menu scripts are translated through the language files.
+- README completed, license stated and contribution guide added.

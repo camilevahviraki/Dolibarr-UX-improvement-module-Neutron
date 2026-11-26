@@ -1,12 +1,95 @@
 # Neutron
 
-Theme and interface improvements for Dolibarr, as a module.
+A modern interface for Dolibarr, as a module: it ships the theme `neutron`, built on the theme `md`, and a few
+scripts for the menus. No core file is changed.
+
+Neutron is free and open source software, under the [GNU GPL v3 or later](#license). Contributions are welcome.
+
+## What it changes
+
+| Part | Changes |
+| --- | --- |
+| Top bar | Slate bar, highlight of the current module, user menu |
+| Left menu | Full height column that reduces to icons, hover preview, foldable sections, current page |
+| Tabs and lists | Thick line under the current tab, lists in rounded panels |
+| Forms | One field style and width, select lists, checkboxes, radios, date picker |
+| Record cards | Two panels side by side, photo, readable labels |
+| Tablets and phones | Left menu as a drawer, modules in a sheet that opens from the bottom |
+| Font and texts | Poppins, bundled; texts of the module in English and French |
+
+## Requirements
+
+- Dolibarr 23 or later.
+- PHP 7.2 or later.
+- A recent browser: the styles use `:has()` and `color-mix()` (Chrome and Edge 111+, Firefox 121+, Safari 16.2+).
+- JavaScript, for the behaviours of the menus.
 
 ## Install
 
-1. Put this folder in `htdocs/custom/neutron`.
-2. Enable the module in *Setup > Modules*.
-3. Select the theme `neutron` in *Setup > Display > Theme*.
+1. Get the module into `htdocs/custom/neutron`. From the Dolibarr folder:
+
+   ```bash
+   git clone https://github.com/camilevahviraki/Dolibarr-UX-improvement-module-Neutron.git htdocs/custom/neutron
+   ```
+
+   The folder must be named `neutron`, and Dolibarr must load the `custom` folder
+   (`$dolibarr_main_document_root_alt` in `htdocs/conf/conf.php`).
+2. Enable the module **Neutron** in *Setup > Modules*.
+3. Select the theme `neutron` in *Setup > Display > Theme*, then save.
+
+## Update
+
+1. Update the folder (`git pull`).
+2. If the update adds or renames a script, disable and enable the module: Dolibarr records the list of scripts when
+   the module is enabled. Disabling selects the theme `eldy` again, so select `neutron` once more.
+3. If the old look remains, reload the page without the browser cache.
+
+To remove the module, disable it in *Setup > Modules*, then delete the folder.
+
+## Screens
+
+| Width | Top bar | Left menu |
+| --- | --- | --- |
+| 1025px and more | Modules, with help, search and user at the right | Column, open or reduced to icons (the choice is kept) |
+| 1024px and less | Menu button, current module, **Modules** button, search and user | Drawer over the page, closed on each page |
+
+Forms have one label and its field per line from 1200px down, and the label above the field from 600px down.
+
+## Colors
+
+The defaults are in `lib/neutron.lib.php`. To replace one, add the constant `NEUTRON_COLOR_<NAME>` with a
+hexadecimal value in *Setup > Other setup*, for example `NEUTRON_COLOR_ACCENT` = `#0f766e`.
+
+*Setup > Display > Theme* shows the Neutron colors as defaults. Its color fields belong to the themes of Dolibarr:
+use the constants to change Neutron.
+
+## Translations
+
+The texts are in `langs/<language>/neutron.lang`. English and French are provided; other languages show English.
+
+## Known limits
+
+- Lists scroll sideways on tablets and phones.
+- Page titles, buttons, badges, the dashboard, popups and dark mode are not restyled yet.
+- On a computer screen with many modules, the top bar can take two lines.
+- Tablet and phone layouts were checked in narrow browser frames, not yet on real devices.
+- The module number (513900) is not reserved yet.
+- The browser does not keep the stylesheet in cache while the theme is being built.
+
+## Contributing
+
+[CONTRIBUTING.md](CONTRIBUTING.md) explains the branches, commits, pull requests and checks. The structure and the
+rules of the code are below.
+
+## License
+
+Neutron is free software: you can redistribute it and modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later
+version. It is distributed without any warranty. The full text is in [COPYING](COPYING). This is the license of
+Dolibarr itself.
+
+The font Poppins, in `fonts/`, keeps its own license, the SIL Open Font License:
+[fonts/LICENSE-Poppins.txt](fonts/LICENSE-Poppins.txt).
 
 ## Full structure
 
@@ -66,16 +149,17 @@ htdocs/custom/neutron/
 ├── fonts/                            Poppins and its license
 ├── img/                              images of the module
 ├── admin/
-│   ├── setup.php                     options
+│   ├── setup.php                     setup page (no option yet)
 │   └── about.php
 ├── lib/
 │   └── neutron.lib.php               default colors, shared PHP functions
 ├── langs/
 │   ├── en_US/neutron.lang
 │   └── fr_FR/neutron.lang
-├── README.md                         this file: install, structure and rules
+├── README.md                         this file: use, structure and rules
+├── CONTRIBUTING.md                   how to propose a change
 ├── ChangeLog.md
-└── COPYING
+└── COPYING                           GNU GPL v3
 ```
 
 ## Rules for overrides
