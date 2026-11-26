@@ -50,6 +50,7 @@ class modNeutron extends DolibarrModules
 				'/neutron/js/menu/highlight-current-page.js',
 				'/neutron/js/menu/collapsible-sections.js',
 				'/neutron/js/menu/sidebar-open-close.js',
+				'/neutron/js/menu/modules-sheet.js',
 			),
 		);
 
