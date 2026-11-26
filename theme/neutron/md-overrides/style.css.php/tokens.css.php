@@ -23,6 +23,9 @@ foreach (neutronColors() as $neutronname => $neutroncolor) {
 	--n-bar-hover: var(--n-side-hover);
 	--n-shadow-bar: 0 1px 0 rgba(255,255,255,.06), 0 4px 16px rgba(15,23,42,.18);
 
+	/* Font */
+	--n-font: 'Poppins', 'Segoe UI', system-ui, -apple-system, Roboto, Arial, sans-serif;
+
 	/* Sizes */
 	--n-radius: 12px;
 	--n-radius-sm: 8px;
