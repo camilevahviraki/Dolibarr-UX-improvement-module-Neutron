@@ -51,7 +51,8 @@ htdocs/custom/neutron/
 │           ├── dashboard.css.php
 │           └── dark.css.php
 ├── css/
-│   └── settings.css.php              new in Neutron, overrides nothing
+│   ├── settings.css.php              default colors on the theme setup page
+│   └── theme-images.css.php          images Dolibarr looks for outside of the module
 ├── js/menu/
 │   ├── shared-menu-helpers.js        functions shared by the menu scripts
 │   ├── highlight-current-page.js     highlight of the current page

@@ -14,3 +14,10 @@
 - Left menu scripts, with explicit file names.
 - Tab styles.
 - Table and list styles.
+- Form styles: fields, select lists, checkboxes, radios, widths and date ranges.
+- Date, delete and drag images shown (taken from md).
+- Date fields: a line calendar icon for the date picker.
+- Select lists: same text size, corners and opened list as the modern theme.
+- Dropdown menus and column selector styled as in the modern theme.
+- Filters above lists: multiple choice lists as high as a field, text centred.
+- Form labels: small and bold, as in the modern theme.

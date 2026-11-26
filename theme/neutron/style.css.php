@@ -24,6 +24,9 @@ include __DIR__.'/md-overrides/index.php';
 // New in Neutron: the default colors on the theme setup page
 include dirname(__DIR__, 2).'/css/settings.css.php';
 
+// New in Neutron: images that Dolibarr looks for outside of the module
+include dirname(__DIR__, 2).'/css/theme-images.css.php';
+
 // md lets the browser keep the sheet for 3 hours: ask it to check at each page while the theme is being built.
 // TODO Use a long max-age again before publishing.
 header('Cache-Control: no-cache, must-revalidate');
