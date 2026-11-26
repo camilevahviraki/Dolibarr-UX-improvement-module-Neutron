@@ -16,20 +16,14 @@
 
 	var READY = 'n-modules-ready';
 	var OPEN = 'n-modules-open';
-	// Texts of the button. TODO Take them from langs/ (a static script receives no translation).
-	var TEXTS = {
-		en: { label: 'Modules', title: 'Show all modules' },
-		fr: { label: 'Modules', title: 'Afficher tous les modules' }
-	};
 
 	function setup(bar, list) {
 		var body = document.body;
-		var texts = TEXTS[document.documentElement.lang.slice(0, 2)] || TEXTS.en;
 
 		var button = document.createElement('button');
 		button.type = 'button';
 		button.className = 'n-modules-button';
-		button.title = texts.title;
+		button.title = N.t('showModules', 'Show all modules');
 		button.setAttribute('aria-expanded', 'false');
 		var icon = document.createElement('span');
 		icon.className = 'fas fa-th';
@@ -38,7 +32,7 @@
 		// A visible title: a touch screen shows no tooltip
 		var label = document.createElement('span');
 		label.className = 'n-modules-label';
-		label.textContent = texts.label;
+		label.textContent = N.t('modules', 'Modules');
 		button.appendChild(label);
 
 		var name = document.createElement('span');
