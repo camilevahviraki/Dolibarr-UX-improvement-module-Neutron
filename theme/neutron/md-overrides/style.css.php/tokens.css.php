@@ -32,11 +32,11 @@ foreach (neutronColors() as $neutronname => $neutroncolor) {
 	--n-side-w: 290px;
 	--n-rail-w: 56px;
 	--n-top-h: 50px;
-	/* forms: height of a field, width of fields and text areas, room of a field icon */
+	/* forms: height of a field, width of fields and text areas (shares of the screen), room of a field icon */
 	--n-control-h: 36px;
 	--n-control-h-sm: 30px;
-	--n-field-w: 340px;
-	--n-area-w: 560px;
+	--n-field-w: 17vw;
+	--n-area-w: 30vw;
 	--n-icon-w: 22px;
 	--n-shadow: 0 1px 2px rgba(15,23,42,.04), 0 6px 20px rgba(15,23,42,.04);
 	--n-shadow-lg: 0 10px 30px rgba(15,23,42,.14);
