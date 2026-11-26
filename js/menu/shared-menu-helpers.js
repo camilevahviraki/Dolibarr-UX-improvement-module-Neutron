@@ -29,6 +29,11 @@
 		return el.textContent.replace(/\s+/g, ' ').trim();
 	};
 
+	// A text of translations.js.php, in the language of the page. The English one if that script did not run.
+	N.t = function (name, english) {
+		return (N.texts && N.texts[name]) || english;
+	};
+
 	// Storage can be blocked by the browser: the menu then works without memory
 	function storage(name) {
 		return {
