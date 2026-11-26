@@ -37,5 +37,5 @@
 
 /* ---------- Font (md prints $fontlist) ---------- */
 body, input, select, textarea, button {
-	font-family: 'Poppins', 'Segoe UI', system-ui, -apple-system, Roboto, Arial, sans-serif;
+	font-family: var(--n-font);
 }
