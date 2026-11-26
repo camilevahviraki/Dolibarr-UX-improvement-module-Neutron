@@ -10,7 +10,8 @@
 
 	// The style sheets are declared before the module scripts in the page head
 	N.active = !!document.querySelector('link[href*="/theme/neutron/style.css.php"]');
-	N.desktop = window.matchMedia('(hover: hover) and (min-width: 769px)');
+	// Under this width the menu is a drawer: same limit as the *-small-screens.css.php files
+	N.desktop = window.matchMedia('(min-width: 1025px)');
 	N.root = new URL('../../../../', document.currentScript.src).href; // htdocs
 	N.CLOSED = 'sidebar-collapse'; // Dolibarr class on <body>
 	N.PEEK = 'n-menu-peek';

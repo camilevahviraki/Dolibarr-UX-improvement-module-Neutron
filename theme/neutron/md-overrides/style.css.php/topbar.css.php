@@ -30,7 +30,7 @@ html body #id-top li.tmenusel :is(div.tmenucenter, a, a span) { color: var(--n-t
 /* ---------- Block at the right: help, print, search, bookmarks and user, in one row ---------- */
 html body #id-top .login_block, html body #id-top .login_block a, html body #id-top #topmenu-login-dropdown a.dropdown-toggle { color: var(--n-bar-text); }
 
-@media screen and (min-width: 769px) {
+@media screen {
 	/* The bar takes the full width: md keeps its left corner for this block */
 	html body #id-top.side-nav-vert { margin-left: 0; margin-right: 0; }
 
@@ -54,11 +54,13 @@ html body #id-top .login_block, html body #id-top .login_block a, html body #id-
 	html body #id-top div.login_block span.aversion { color: var(--n-bar-icon); font-size: 11px; filter: none; }
 	/* !important: md colors these icons with !important */
 	html body #id-top div.login_block_other .atoplogin { color: var(--n-bar-icon) !important; }
+}
 
-	/* Room kept for the block so that the entries do not slide under it */
+/* Room kept for the block so that the entries do not slide under it (small screens: topbar-small-screens.css.php) */
+@media screen and (min-width: 1025px) {
 	html body #id-top ul.tmenu { margin-right: 330px; }
 }
-@media screen and (min-width: 769px) and (max-width: 1500px) {
+@media screen and (min-width: 1025px) and (max-width: 1500px) {
 	html body #id-top div.login_block span.aversion, html body #id-top .atoploginusername { display: none; }
 	html body #id-top ul.tmenu { margin-right: 210px; }
 }
