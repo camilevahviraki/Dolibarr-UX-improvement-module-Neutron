@@ -1,7 +1,7 @@
 # Contributing to Neutron
 
-Thank you for helping. This page says how to propose a change. The structure of the module and the rules for
-overrides and styles are in the [README](README.md#full-structure): read them first.
+Thank you for helping. This page says how to propose a change. Read first the [structure](docs/structure.md) of
+the module and the [rules for overrides and styles](docs/styles.md).
 
 ## Set up
 
@@ -36,8 +36,8 @@ expected and what you see. A screenshot helps: hide personal and company data fi
 
 ### Styles
 
-- Follow the [rules for overrides](README.md#rules-for-overrides) and the
-  [rules for the styles](README.md#rules-for-the-styles).
+- Follow the [rules for overrides](docs/styles.md#rules-for-overrides) and the
+  [rules for the styles](docs/styles.md#rules-for-the-styles).
 - Prefer sizes that follow the screen (percentages, `vw`) to fixed widths.
 - The menus of tablets and phones start at 1024px and below. This limit is written in `topbar.css.php`,
   `sidebar.css.php`, `topbar-small-screens.css.php`, `sidebar-small-screens.css.php`, `modules-sheet.css.php` and
@@ -81,10 +81,10 @@ Then check in the browser, with the theme `neutron` selected:
 ## Pull requests
 
 - One feature per pull request, into `master`.
-- Say what changes, how you checked it and what you did not check. Add screenshots for a visual change.
-- Update the README when the structure or the use of the module changes.
-- Pull requests are merged with a merge commit. For stacked branches, the first one is merged first, then the base
-  of the next one is set to `master`.
+- Say what changes. Add screenshots for a visual change.
+- Update the page of `docs/` that your change concerns (and the README if the install changes).
+- If the look of a page of the README changes, replace its image in `docs/screenshots/`. Use example data only.
+- Pull requests are merged with a merge commit.
 
 ## License
 
