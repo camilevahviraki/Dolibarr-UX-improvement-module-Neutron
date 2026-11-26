@@ -1,7 +1,8 @@
 <?php
 /**
  * \file       htdocs/custom/neutron/theme/neutron/md-overrides/style.css.php/sidebar.css.php
- * \brief      Left menu: panel, entries, current page, full height layout, icon bar and hover preview.
+ * \brief      Left menu: panel, entries, current page; on computers, full height layout, icon bar and hover preview.
+ *             Tablets and phones: see sidebar-small-screens.css.php.
  *             Overrides htdocs/theme/md/style.css.php.
  *
  * Classes prefixed "n-" are added by the scripts of js/menu (current page, folding, hover preview).
@@ -100,30 +101,39 @@ html body .side-nav .select2-selection .select2-selection__rendered { flex: 1; m
 html body .side-nav .select2-selection .select2-selection__arrow { position: absolute; top: 0; right: 6px; height: 36px !important; }
 html body .side-nav .select2-selection :is(.select2-selection__rendered, .select2-selection__placeholder, .fa) { color: var(--n-side-text) !important; }
 
+/* the search fields that Dolibarr puts in the menu of phones */
+/* !important: forms.css.php and md border the fields with !important */
+html body .side-nav div.blockvmenusearch input[type=text] {
+	box-sizing: border-box; width: 100%; max-width: 100%;
+	background: var(--n-side-card); color: var(--n-side-strong); border-color: var(--n-side-line) !important;
+}
+
+/* ---------- Toggle: a panel icon ---------- */
+html body .menuhider span.fa-bars::before {
+	content: ""; display: inline-block; width: 20px; height: 20px; vertical-align: middle;
+	background-color: currentColor;
+	-webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='round'%3E%3Crect x='3' y='4' width='18' height='16' rx='3'/%3E%3Cpath d='M9.5 4v16'/%3E%3C/svg%3E") center / contain no-repeat;
+	mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='round'%3E%3Crect x='3' y='4' width='18' height='16' rx='3'/%3E%3Cpath d='M9.5 4v16'/%3E%3C/svg%3E") center / contain no-repeat;
+}
 <?php
-// The layout below is for computers only: phones and tablets keep the menu of md, and nothing changes in print.
-if (GETPOST('optioncss', 'aZ09') != 'print' && !in_array($conf->browser->layout, array('phone', 'tablet'))) {
+// The layout below depends on the width only, so that a narrow window and a phone look the same. Not for print.
+if (GETPOST('optioncss', 'aZ09') != 'print') {
 	?>
 .n-peek-head { display: none; }
 
-@media screen and (min-width: 769px) {
+@media screen and (min-width: 1025px) {
 	/* ---------- Full height column: the head (behind the toggle) and the scrolling menu ---------- */
 	html body:has(.side-nav)::before {
 		content: ""; position: fixed; top: 0; left: 0; z-index: 90;
 		box-sizing: border-box; width: var(--n-side-w); height: var(--n-top-h);
 		background: var(--n-side-bg); border-right: 1px solid var(--n-side-line);
 	}
-	html body .side-nav { top: var(--n-top-h); transition: width .24s ease; transition-delay: 0s; }
+	/* position and !important: Dolibarr lays phones and large tablets out differently */
+	html body .side-nav { position: fixed; top: var(--n-top-h); bottom: 0; overflow-x: hidden; overflow-y: auto; transition: width .24s ease; transition-delay: 0s; }
+	html body .side-nav #id-left { top: auto !important; }
 	html body:has(.side-nav) #id-top.side-nav-vert { margin-left: var(--n-side-w); }
-	html body:has(.side-nav) #id-right { padding-left: calc(var(--n-side-w) + 23px); }
+	html body:has(.side-nav) #id-right { padding-left: calc(var(--n-side-w) + 23px) !important; }
 
-	/* ---------- Toggle: a panel icon at the head of the column ---------- */
-	html body .menuhider span.fa-bars::before {
-		content: ""; display: inline-block; width: 20px; height: 20px; vertical-align: middle;
-		background-color: currentColor;
-		-webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='round'%3E%3Crect x='3' y='4' width='18' height='16' rx='3'/%3E%3Cpath d='M9.5 4v16'/%3E%3C/svg%3E") center / contain no-repeat;
-		mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='round'%3E%3Crect x='3' y='4' width='18' height='16' rx='3'/%3E%3Cpath d='M9.5 4v16'/%3E%3C/svg%3E") center / contain no-repeat;
-	}
 	html body:has(.side-nav) #id-top li#mainmenutd_menu {
 		position: fixed; top: 0; left: 0; z-index: 2;
 		display: flex; align-items: center; justify-content: center;
@@ -136,7 +146,7 @@ if (GETPOST('optioncss', 'aZ09') != 'print' && !in_array($conf->browser->layout,
 	/* ---------- Closed: a narrow column ---------- */
 	html body.sidebar-collapse:has(.side-nav)::before { width: var(--n-rail-w); }
 	html body.sidebar-collapse:has(.side-nav) #id-top.side-nav-vert { margin-left: var(--n-rail-w); }
-	html body.sidebar-collapse:has(.side-nav) #id-right { padding-left: calc(var(--n-rail-w) + 9px); }
+	html body.sidebar-collapse:has(.side-nav) #id-right { padding-left: calc(var(--n-rail-w) + 9px) !important; }
 	html body.sidebar-collapse .side-nav { display: block; width: var(--n-rail-w); }
 
 	/* ---------- Closed and not previewed: one icon per section ---------- */
