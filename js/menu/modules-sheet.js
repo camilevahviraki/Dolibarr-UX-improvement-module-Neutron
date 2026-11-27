@@ -1,10 +1,6 @@
 /**
  * \file       htdocs/custom/neutron/js/menu/modules-sheet.js
- * \brief      Tablets and phones: the modules of the top bar open from the bottom of the screen.
- *
- * Adds to the top bar the name of the current module and a button. The button opens the entries of Dolibarr
- * as a grid (styles in modules-sheet.css.php); a tap outside of it, the button, the toggle of the left menu
- * or the Escape key closes it. Without this script, the entries stay in the top bar.
+ * \brief      Tablets and phones: modules in a sheet from the bottom.
  */
 (function () {
 	'use strict';
@@ -29,7 +25,6 @@
 		icon.className = 'fas fa-th';
 		icon.setAttribute('aria-hidden', 'true');
 		button.appendChild(icon);
-		// A visible title: a touch screen shows no tooltip
 		var label = document.createElement('span');
 		label.className = 'n-modules-label';
 		label.textContent = N.t('modules', 'Modules');
@@ -48,7 +43,7 @@
 		button.addEventListener('click', function () {
 			var open = !body.classList.contains(OPEN);
 			if (open) {
-				body.classList.add(N.CLOSED); // one panel at a time
+				body.classList.add(N.CLOSED);
 			}
 			show(open);
 		});
