@@ -69,6 +69,7 @@ htdocs/custom/neutron/
 │   ├── setup.php                     setup page (no option yet)
 │   └── about.php
 ├── lib/
+│   ├── dolibarr-root.php             finds the Dolibarr folder
 │   └── neutron.lib.php               default colors, shared PHP functions
 ├── langs/
 │   ├── en_US/neutron.lang
