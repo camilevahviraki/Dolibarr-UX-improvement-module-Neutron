@@ -1,0 +1,68 @@
+/**
+ * \file       htdocs/custom/neutron/theme/neutron/md-overrides/style.css.php/tabs-sheet.css
+ * \brief      Tabs on tablets and phones.
+ *             Overrides htdocs/theme/md/style.css.php.
+ */
+
+.n-tabs-button, .n-tabs-veil, .n-tabs-sheet { display: none; }
+
+@media screen and (max-width: 1024px) {
+	/* ---------- Current tab and button: one block to touch ---------- */
+	html body div.tabs.n-tabs-ready {
+		flex-wrap: nowrap; align-items: center; justify-content: space-between; gap: 12px;
+		padding: 4px 12px; cursor: pointer;
+		background: color-mix(in srgb, var(--n-accent) 4%, var(--n-surface));
+		border: 1px solid var(--n-accent); border-bottom-width: 4px; border-radius: var(--n-radius-sm);
+	}
+	html body div.tabs.n-tabs-ready:active { background: var(--n-accent-soft); }
+	html body div.tabs.n-tabs-ready > :is(.tabsElem:not(.tabsElemActive, .floatright), #moretabs, [id^="moretabs"]) { display: none !important; }
+	html body div.tabs.n-tabs-ready > .tabsElemActive { order: -1; flex: 1; min-width: 0; }
+	html body div.tabs.n-tabs-ready > .tabsElemActive a.tab { max-width: 100%; white-space: normal; overflow-wrap: anywhere; font-size: 15px; line-height: 1.3; }
+	html body div.tabs.n-tabs-ready > .tabsElemActive a.tab::after { content: none; }
+
+	html body div.tabs.n-tabs-ready > .n-tabs-button {
+		display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px;
+		min-width: 56px; height: 48px; margin: 0; padding: 0;
+		border: 0; background: transparent; color: var(--n-accent-strong); cursor: pointer;
+		font-family: var(--n-font); font-size: 11px; font-weight: 600; line-height: 1;
+	}
+	.n-tabs-icon {
+		width: 22px; height: 22px; background-color: currentColor;
+		-webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 6h10M4 12h8M4 18h6M18 9v9M15 15l3 3 3-3'/%3E%3C/svg%3E") center / contain no-repeat;
+		mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 6h10M4 12h8M4 18h6M18 9v9M15 15l3 3 3-3'/%3E%3C/svg%3E") center / contain no-repeat;
+	}
+
+	/* ---------- Sheet ---------- */
+	html body .n-tabs-sheet {
+		display: block; position: fixed; left: 0; right: 0; bottom: -100%; z-index: 1100; visibility: hidden;
+		max-height: 70vh; overflow-y: auto; overscroll-behavior: contain; padding-bottom: 12px;
+		background: var(--n-surface); border-radius: 18px 18px 0 0; box-shadow: var(--n-shadow-lg);
+		transition: bottom .25s ease, visibility 0s .25s;
+	}
+	html body .n-tabs-sheet.n-tabs-open { bottom: 0; visibility: visible; transition: bottom .25s ease; }
+	.n-tabs-title {
+		position: sticky; top: 0; padding: 14px 18px 10px;
+		background: var(--n-surface); border-bottom: 1px solid var(--n-border);
+		color: var(--n-muted); font-family: var(--n-font); font-size: 12.5px; font-weight: 600;
+	}
+	html body .n-tabs-sheet a.n-tabs-item {
+		display: flex; align-items: center; gap: 8px; min-height: 48px; padding: 0 18px;
+		color: var(--n-ink); font-family: var(--n-font); font-size: 15px; font-weight: 500; text-decoration: none;
+	}
+	html body .n-tabs-sheet a.n-tabs-item.n-current { background: var(--n-accent-soft); box-shadow: inset 4px 0 0 var(--n-accent); color: var(--n-accent-strong); font-weight: 600; }
+	html body .n-tabs-sheet a.n-tabs-item .badge {
+		margin-left: auto !important; padding: 2px 9px; border-radius: 999px;
+		background: var(--n-surface-3); color: var(--n-ink-2); font-size: 12px;
+	}
+
+	/* ---------- Veil ---------- */
+	html body .n-tabs-veil.n-tabs-open {
+		display: block; position: fixed; inset: 0; z-index: 1099;
+		background: rgba(15,23,42,.5);
+		cursor: pointer; /* iOS sends no click without it */
+	}
+	html body.n-tabs-open { overflow: hidden; }
+}
+@media (prefers-reduced-motion: reduce) {
+	html body .n-tabs-sheet { transition: none !important; }
+}
