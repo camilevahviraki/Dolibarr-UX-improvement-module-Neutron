@@ -15,3 +15,6 @@ NeutronShowModules = Show all modules
 # Tabs of tablets and phones
 NeutronTabs = Tabs
 NeutronTabsTitle = Tabs of this record
+
+# Select lists
+NeutronNothingSelected = Nothing selected
