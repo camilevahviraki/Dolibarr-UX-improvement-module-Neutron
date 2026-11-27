@@ -37,3 +37,4 @@
 - The theme loads when the module is a link or is stored outside the Dolibarr folder.
 - Badges and statuses: rounded labels.
 - Popups: tooltips with a pointer to their element, notifications, message boxes and dialogs.
+- Select lists: the blank choice reads "Nothing selected".
