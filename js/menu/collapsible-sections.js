@@ -1,10 +1,6 @@
 /**
  * \file       htdocs/custom/neutron/js/menu/collapsible-sections.js
  * \brief      Arrows of the left menu sections and their sub entries.
- *
- * The menu is flat (a section name, then its entries as siblings). Dolibarr only sends the entries of the
- * section being browsed: the others are read from the full menu and added folded, so that every section
- * with entries has its arrow.
  */
 (function () {
 	'use strict';
@@ -14,8 +10,8 @@
 		return;
 	}
 
-	var GROUPS = 'neutron_menu_groups'; // {"<section name>": true if folded}, in localStorage
-	var FULL = 'neutron_menu_full'; // whole menu tree, cached in sessionStorage
+	var GROUPS = 'neutron_menu_groups'; // {"<section name>": true if folded}
+	var FULL = 'neutron_menu_full';
 	var MENU_URL = new URL('core/get_menudiv.php', N.root).href;
 
 	function getGroups() {
@@ -70,7 +66,6 @@
 		title.appendChild(btn);
 		title.classList.add('n-has-children');
 
-		// The section of the current page is never folded
 		setFolded(title, items, !hasCurrent && (saved === undefined ? foldedByDefault : saved));
 
 		btn.addEventListener('click', function (ev) {
@@ -81,13 +76,12 @@
 			saveGroup(name, folded);
 		});
 
-		// Sent when a section is opened from the icon bar: show that one only, without saving the choice
+		// From the icon bar: shows that section only, without saving
 		title.addEventListener('neutron:show', function (ev) {
 			setFolded(title, items, ev.detail !== title);
 		});
 	}
 
-	// Calls done(doc) with the whole menu tree, served by Dolibarr as nested lists
 	function loadFullMenu(done) {
 		function parse(html) {
 			done(new DOMParser().parseFromString(html, 'text/html'));
@@ -107,14 +101,12 @@
 		}).catch(function () { /* offline or blocked: the menu stays as sent */ });
 	}
 
-	// Name of a section in the full menu: its text without the sub lists
 	function sectionName(li) {
 		var copy = li.cloneNode(true);
 		Array.prototype.forEach.call(copy.querySelectorAll('ul'), function (ul) { ul.remove(); });
 		return N.text(copy);
 	}
 
-	// Sections (name -> list item) of the main menu that matches best the section names of the page
 	function matchingSections(doc, names) {
 		var best = {};
 		var bestCount = 0;
@@ -134,7 +126,6 @@
 		return best;
 	}
 
-	// Same markup as the entries sent by Dolibarr: div.menu_contenu > a.vsmenu
 	function menuEntry(li) {
 		var source = li.querySelector(':scope > a');
 		if (!source) {
@@ -143,7 +134,7 @@
 		var item = document.createElement('div');
 		item.className = 'menu_contenu';
 		var link = document.importNode(source, true);
-		// A label without a page: Dolibarr sends it as a span, the full menu as a link to the home page
+		// A label without a page is a link to the home page in the full menu
 		if (new URL(link.getAttribute('href') || N.root, window.location.href).href === N.root) {
 			var label = document.createElement('span');
 			while (link.firstChild) {
@@ -177,7 +168,6 @@
 		});
 	}
 
-	// Unfolds the section of the current entry and scrolls the menu to it
 	function revealCurrent() {
 		var node = document.querySelector('div.vmenu .menu_contenu.n-current');
 		while (node && !node.classList.contains('menu_titre')) {
@@ -193,7 +183,6 @@
 		}
 		var box = current.getBoundingClientRect();
 		var view = menu.getBoundingClientRect();
-		// Left where it is when already well inside the menu (not stuck to its bottom edge)
 		if (box.top < view.top || box.bottom > view.bottom - 60) {
 			current.scrollIntoView({ block: 'center' });
 		}
@@ -207,13 +196,11 @@
 		if (incomplete) {
 			loadFullMenu(function (doc) {
 				addMissingEntries(doc);
-				N.markCurrent(); // the current entry may be one of those just added
+				N.markCurrent();
 				revealCurrent();
 			});
 		}
 
-		// A section name opens its page: show the section unfolded there, even if it was folded before.
-		// A click already handled (icon bar) loads no page and is not saved.
 		document.addEventListener('click', function (ev) {
 			var name = ev.target.closest(N.TITLES + ' a.vmenu[href]');
 			if (name && !ev.defaultPrevented) {

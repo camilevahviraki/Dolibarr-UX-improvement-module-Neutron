@@ -1,18 +1,15 @@
 <?php
 /**
  * \file       htdocs/custom/neutron/theme/neutron/md-overrides/style.css.php/modules-sheet.css.php
- * \brief      Tablets and phones: the entries of the top bar in a grid that opens from the bottom.
+ * \brief      Modules sheet of tablets and phones.
  *             Overrides htdocs/theme/md/style.css.php.
- *
- * The classes come from js/menu/modules-sheet.js: without them the entries stay in the top bar.
- * Loaded after topbar-small-screens.css.php. Same width limit as topbar-small-screens.css.php and js/menu/shared-menu-helpers.js: 1024px.
  */
 ?>
 
 .n-modules-button, .n-module-name { display: none; }
 
 @media screen and (max-width: 1024px) {
-	/* ---------- In the bar: name of the module and the button of the sheet ---------- */
+	/* ---------- Top bar ---------- */
 	html body.n-modules-ready #id-top .n-module-name {
 		display: block; position: absolute; top: 0; left: 52px; right: 178px;
 		overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
@@ -27,8 +24,8 @@
 	html body #id-top .n-modules-label { font-family: var(--n-font); font-size: 11px; font-weight: 500; line-height: 1; }
 	html body.n-modules-ready.n-modules-open #id-top .n-modules-button { color: var(--n-active); }
 
-	/* ---------- The sheet ---------- */
-	/* Moved with "bottom": a transform would also move the toggle of the left menu, which stays in the bar */
+	/* ---------- Sheet ---------- */
+	/* "bottom", not a transform: it would also move the menu toggle */
 	html body.n-modules-ready #id-top ul.tmenu {
 		position: fixed; left: 0; right: 0; bottom: -100%; z-index: 2; visibility: hidden;
 		display: grid; grid-template-columns: repeat(auto-fill, minmax(84px, 1fr)); gap: 6px; align-content: start;
@@ -44,23 +41,20 @@
 	html body.n-modules-ready #id-top ul.tmenu .tmenulabel, html body.n-modules-ready #id-top ul.tmenu .mainmenuaspan {
 		display: block; font-size: 11.5px; line-height: 1.3;
 	}
-	/* no pointer under the current module */
 	html body.n-modules-ready #id-top ul.tmenu > li.tmenusel::after { content: none; }
-	/* entries that only fill the bar */
 	html body.n-modules-ready #id-top ul.tmenu > li:is(.tmenuend, .menu_end) { display: none; }
 
-	/* the toggle of the left menu stays at the top left */
 	html body.n-modules-ready #id-top ul.tmenu > li.menuhider {
 		position: fixed; top: 0; left: 0; visibility: visible;
 		width: 48px; height: var(--n-top-h); min-height: 0;
 	}
 
-	/* ---------- Veil over the page ---------- */
+	/* ---------- Veil ---------- */
 	html body.n-modules-ready.n-modules-open { overflow: hidden; }
 	html body.n-modules-ready.n-modules-open #id-top::after {
 		content: ""; position: fixed; inset: 0; z-index: 1;
 		background: rgba(15,23,42,.5);
-		cursor: pointer; /* without it, iOS sends no click */
+		cursor: pointer; /* iOS sends no click without it */
 	}
 }
 @media (prefers-reduced-motion: reduce) {

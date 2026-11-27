@@ -13,7 +13,6 @@
  * \brief      About page of the module Neutron.
  */
 
-// Load Dolibarr environment, from htdocs/custom/neutron/admin
 $res = 0;
 if (file_exists('../../../main.inc.php')) {
 	$res = include '../../../main.inc.php';

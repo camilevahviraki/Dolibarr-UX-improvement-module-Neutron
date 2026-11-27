@@ -10,11 +10,9 @@
 /**
  * \file       htdocs/custom/neutron/js/menu/translations.js.php
  * \ingroup    neutron
- * \brief      Texts of the menu scripts, in the language of the page: Neutron.texts.
- *             The texts are in langs/<language>/neutron.lang. Dolibarr adds the language to the address.
+ * \brief      Texts of the menu scripts: Neutron.texts.
  */
 
-// A script: no login, no menu and no new token
 if (!defined('NOREQUIRESOC')) {
 	define('NOREQUIRESOC', '1');
 }
@@ -37,7 +35,6 @@ if (!defined('NOREQUIREAJAX')) {
 	define('NOREQUIREAJAX', '1');
 }
 
-// Load Dolibarr environment, from htdocs/custom/neutron/js/menu
 $res = 0;
 if (file_exists('../../../../main.inc.php')) {
 	$res = include '../../../../main.inc.php';
@@ -54,7 +51,6 @@ if (!$res) {
 
 $langs->load('neutron@neutron');
 
-// Name used by the scripts => key of the language files
 $keys = array(
 	'menuClosedTip' => 'NeutronMenuClosedTip',
 	'menuOpenTip' => 'NeutronMenuOpenTip',

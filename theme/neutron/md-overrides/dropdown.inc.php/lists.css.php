@@ -6,8 +6,7 @@
  */
 ?>
 
-/* ---------- A dropdown is a rounded panel ---------- */
-/* !important: md sets the corners, borders and shadows of these panels with !important */
+/* ---------- Dropdowns ---------- */
 html body :is(.dropdown-menu, div.dropdown-content, .ui-menu) {
 	border: 1px solid var(--n-border) !important;
 	border-radius: var(--n-radius) !important;
@@ -17,9 +16,8 @@ html body :is(.dropdown-menu, div.dropdown-content) { background: var(--n-surfac
 html body :is(.dropdown-menu, .dropdown-content) a { border-radius: 6px; }
 html body :is(.dropdown-menu, .dropdown-content) a:hover { background: var(--n-accent-soft) !important; }
 
-/* ---------- Column selector (list icon in the header of a list) ---------- */
+/* ---------- Column selector ---------- */
 html body .multiselectcheckboxselectedfields ul.selectedfieldsleft {
-	/* !important: md styles this list with !important */
 	margin-top: 6px; padding: 8px !important;
 	background: var(--n-surface) !important;
 	border: 1px solid var(--n-border) !important;
@@ -35,7 +33,6 @@ html body .multiselectcheckboxselectedfields ul.selectedfieldsleft li {
 }
 html body .multiselectcheckboxselectedfields ul.selectedfieldsleft li:hover { background: var(--n-accent-soft); }
 html body .multiselectcheckboxselectedfields ul.selectedfieldsleft li label { flex: 1; margin: 0; padding: 0 !important; cursor: pointer; text-transform: none; }
-/* its search field stays on top, opaque, so that the choices never show through it */
 html body .multiselectcheckboxselectedfields ul.selectedfieldsleft li.liinputsearch,
 html body .multiselectcheckboxselectedfields ul.selectedfieldsleft li.liinputsearch:hover {
 	position: sticky; top: -8px; z-index: 2;

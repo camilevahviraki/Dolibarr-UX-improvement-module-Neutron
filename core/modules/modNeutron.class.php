@@ -42,9 +42,8 @@ class modNeutron extends DolibarrModules
 		$this->picto = 'fa-columns';
 
 		$this->module_parts = array(
-			// The theme is in htdocs/custom/neutron/theme/neutron
 			'theme' => 1,
-			// Loaded on every page, in this order. Each script runs only with the neutron theme.
+			// In loading order
 			'js' => array(
 				'/neutron/js/menu/shared-menu-helpers.js',
 				'/neutron/js/menu/translations.js.php',
@@ -91,7 +90,6 @@ class modNeutron extends DolibarrModules
 	{
 		global $conf;
 
-		// The theme disappears with the module: go back to the default theme if it was selected
 		if (getDolGlobalString('MAIN_THEME') == 'neutron') {
 			require_once DOL_DOCUMENT_ROOT.'/core/lib/admin.lib.php';
 			dolibarr_set_const($this->db, 'MAIN_THEME', 'eldy', 'chaine', 0, '', $conf->entity);

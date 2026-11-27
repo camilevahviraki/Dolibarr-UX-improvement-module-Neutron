@@ -24,7 +24,7 @@ as long as nothing of `eldy` is overridden.
 
 - Change variables first. Neutron's variables are named `--n-*` and come from `lib/neutron.lib.php`.
 - No color written by hand in a rule: use a variable.
-- Use `!important` only where `md` leaves no other way, with a comment saying why.
+- Use `!important` only where `md` leaves no other way.
 - Dark rules go in the `dark.css.php` of the same folder.
 - Each file starts with a header: its path, what it contains and which `md` file it overrides.
 - Texts shown to the user go in `langs/` (`en_US` and `fr_FR`), never in a script or a style.

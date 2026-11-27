@@ -15,15 +15,13 @@ html body #topmenu-login-dropdown .dropdown-menu {
 	box-shadow: var(--n-shadow-lg);
 	line-height: 1.5;
 }
-/* !important: md colors the content of this menu with !important in places */
 html body #topmenu-login-dropdown .dropdown-menu :is(div, p, span, small, b, i, u, a) { color: var(--n-ink) !important; }
 
 html body #topmenu-login-dropdown .dropdown-menu .user-header { background: var(--n-surface-2); text-align: center; }
 html body #topmenu-login-dropdown .dropdown-menu .user-body { padding: 10px 16px; background: var(--n-surface); text-align: center; }
-/* "Show company infos" and "Show more infos" */
 html body #topmenu-login-dropdown .user-body > span { display: flex; align-items: center; justify-content: center; gap: 6px; min-height: 36px; text-align: center; }
 
-/* ---------- Buttons: card, virtual card, logout ---------- */
+/* ---------- Buttons ---------- */
 html body #topmenu-login-dropdown .user-footer {
 	display: flex; align-items: center; gap: 8px;
 	padding: 12px 14px;
@@ -46,6 +44,5 @@ html body #topmenu-login-dropdown .user-footer .pull-left:nth-of-type(2) a { pad
 html body #topmenu-login-dropdown .user-footer a :is(i, span) { margin: 0; padding: 0; line-height: 1; }
 html body #topmenu-login-dropdown .user-footer a:hover { background: var(--n-accent-soft); border-color: var(--n-accent-ring); }
 html body #topmenu-login-dropdown .user-footer a:hover :is(i, span), html body #topmenu-login-dropdown .user-footer a:hover { color: var(--n-accent-strong) !important; }
-/* Logout */
 html body #topmenu-login-dropdown .user-footer .pull-right a, html body #topmenu-login-dropdown .user-footer .pull-right a :is(i, span) { color: var(--n-danger) !important; }
 html body #topmenu-login-dropdown .user-footer .pull-right a:hover { background: var(--n-err-bg); border-color: color-mix(in srgb, var(--n-danger) 30%, transparent); }

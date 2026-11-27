@@ -1,22 +1,18 @@
 <?php
 /**
  * \file       htdocs/custom/neutron/theme/neutron/md-overrides/style.css.php/topbar-small-screens.css.php
- * \brief      Top bar on tablets and phones: one row that stays on screen.
- *             The entries open in a sheet (modules-sheet.css.php); without its script they scroll sideways.
+ * \brief      Top bar of tablets and phones.
  *             Overrides htdocs/theme/md/style.css.php.
- *
- * Same width limit as sidebar-small-screens.css.php and js/menu/shared-menu-helpers.js: 1024px.
  */
 ?>
 
 @media screen and (max-width: 1024px) {
-	/* !important in this file: md sizes and places the bar of phones with !important */
 	html body #id-top { position: sticky; top: 0; z-index: 1005; margin: 0 !important; }
 	html body #id-top, html body #id-top div#tmenu_tooltip, html body #id-top div.tmenudiv {
 		box-sizing: border-box; width: 100% !important; height: var(--n-top-h) !important; min-height: 0; margin: 0; padding: 0;
 	}
 
-	/* ---------- Entries without the script: one row, scrolled with the finger ---------- */
+	/* ---------- Without the script: one scrolling row ---------- */
 	html body #id-top ul.tmenu {
 		display: flex; flex-wrap: nowrap; align-items: center; gap: 2px;
 		height: var(--n-top-h); margin: 0 96px 0 0; padding: 0;
@@ -29,7 +25,6 @@
 		display: block; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 11px;
 	}
 
-	/* the toggle of the menu stays at the left while the entries scroll */
 	html body #id-top ul.tmenu > li.menuhider {
 		position: sticky; left: 0; z-index: 2;
 		display: flex !important; align-items: center; justify-content: center;
@@ -37,13 +32,12 @@
 		background: var(--n-bar); opacity: 1;
 	}
 
-	/* its icon sits in the middle of the bar */
 	html body #id-top ul.tmenu > li.menuhider :is(.tmenucenter, a.tmenuimage, div.mainmenu, span.fa-bars) {
 		display: flex; align-items: center; justify-content: center;
 		position: static !important; width: auto !important; height: 26px !important; min-height: 0; margin: 0 !important; padding: 0 !important;
 	}
 	html body #id-top ul.tmenu > li.menuhider .tmenulabel, html body #id-top ul.tmenu > li.menuhider .mainmenuaspan { display: none; }
 
-	/* ---------- Block at the right: the essential tools only ---------- */
+	/* ---------- Block at the right ---------- */
 	html body #id-top div.login_block div.login_block_other, html body #id-top .atoploginusername { display: none; }
 }
