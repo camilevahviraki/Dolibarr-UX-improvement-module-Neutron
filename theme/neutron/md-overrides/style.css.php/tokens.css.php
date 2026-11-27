@@ -6,18 +6,17 @@
 
 require_once dirname(__DIR__, 4).'/lib/neutron.lib.php';
 
-print "\n/* ---------- Neutron: colors and sizes ---------- */\n:root {\n";
+print "\n\n:root {\n";
 foreach (neutronColors() as $neutronname => $neutroncolor) {
 	print "\t--n-".str_replace('_', '-', $neutronname).': '.$neutroncolor.";\n";
 }
 ?>
-	/* Shades derived from the colors above */
 	--n-accent-strong: color-mix(in srgb, var(--n-accent) 82%, black);
 	--n-accent-soft: color-mix(in srgb, var(--n-accent) 9%, var(--n-surface));
 	--n-accent-ring: color-mix(in srgb, var(--n-accent) 22%, transparent);
 	--n-top-active-text: color-mix(in srgb, var(--n-active) 75%, white);
 
-	/* Top bar: same texts as the left menu */
+	/* Top bar */
 	--n-bar-text: var(--n-side-strong);
 	--n-bar-icon: var(--n-side-icon);
 	--n-bar-hover: var(--n-side-hover);
@@ -32,7 +31,7 @@ foreach (neutronColors() as $neutronname => $neutroncolor) {
 	--n-side-w: 290px;
 	--n-rail-w: 56px;
 	--n-top-h: 50px;
-	/* forms: height of a field, width of fields and text areas (shares of the screen), room of a field icon */
+	/* Forms */
 	--n-control-h: 36px;
 	--n-control-h-sm: 30px;
 	--n-field-w: 17vw;
@@ -48,7 +47,6 @@ foreach (neutronColors() as $neutronname => $neutroncolor) {
 	--colorboxstatsborder: var(--n-border);
 	--inputbordercolor: var(--n-border-strong);
 <?php
-// Those that have a field in Setup - Display - Theme
 foreach (neutronThemeFields() as $neutronfield) {
 	foreach ($neutronfield[1] as $neutronvariable) {
 		print "\t".$neutronvariable.': var(--n-'.str_replace('_', '-', $neutronfield[0]).");\n";
