@@ -22,10 +22,8 @@
 function neutronDefaultColors()
 {
 	return array(
-		// Brand: buttons, links and focus
 		'accent' => '#4f46e5',
 		'link' => '#4338ca',
-		// Dark slate shared by the top bar and the left menu
 		'bar' => '#384547',
 		'side_bg' => '#384547',
 		'side_card' => '#263539',
@@ -35,11 +33,9 @@ function neutronDefaultColors()
 		'side_text' => '#aab5b9',
 		'side_icon' => '#c2cacc',
 		'side_muted' => '#8b9798',
-		// Current entry of the menus
 		'active' => '#3082ff',
 		'active_text' => '#ffffff',
 		'top_active' => '#d9dee0',
-		// Page
 		'body' => '#f5f6f8',
 		'surface' => '#ffffff',
 		'surface_2' => '#f8fafc',
@@ -49,12 +45,10 @@ function neutronDefaultColors()
 		'muted' => '#64748b',
 		'border' => '#e2e8f0',
 		'border_strong' => '#cbd5e1',
-		// Titles, table rows and button text
 		'title_text' => '#0f172a',
 		'row_hover' => '#f8fafc',
 		'row_checked' => '#eef2ff',
 		'button_text' => '#ffffff',
-		// States
 		'danger' => '#b91c1c',
 		'ok_bg' => '#f0fdf4',
 		'warn_bg' => '#fffbeb',
