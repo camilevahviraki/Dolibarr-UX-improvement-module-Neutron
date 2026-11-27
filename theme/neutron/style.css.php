@@ -15,7 +15,15 @@
 // Buffered to replace the cache header of md
 ob_start();
 
-require dirname(__DIR__, 4).'/theme/md/style.css.php';
+require_once dirname(__DIR__, 2).'/lib/dolibarr-root.php';
+$neutronroot = neutronDolibarrRoot();
+if ($neutronroot === '') {
+	header('Content-Type: text/css');
+	print '/* Neutron: the htdocs folder of Dolibarr was not found */';
+	exit;
+}
+
+require $neutronroot.'/theme/md/style.css.php';
 
 include __DIR__.'/md-overrides/index.php';
 
