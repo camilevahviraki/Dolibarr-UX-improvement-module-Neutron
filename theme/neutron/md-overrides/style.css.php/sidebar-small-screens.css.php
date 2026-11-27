@@ -1,17 +1,12 @@
 <?php
 /**
  * \file       htdocs/custom/neutron/theme/neutron/md-overrides/style.css.php/sidebar-small-screens.css.php
- * \brief      Left menu on tablets and phones: a drawer over the page, closed on each page.
+ * \brief      Left menu drawer of tablets and phones.
  *             Overrides htdocs/theme/md/style.css.php.
- *
- * Open or closed is the class "sidebar-collapse" that Dolibarr puts on <body> when the toggle is used.
- * js/menu/sidebar-open-close.js closes the drawer on a click outside of it and with the Escape key.
- * Same width limit as topbar-small-screens.css.php and js/menu/shared-menu-helpers.js: 1024px.
  */
 ?>
 
 @media screen and (max-width: 1024px) {
-	/* !important in this file: md places the menu of phones and the page beside it with !important */
 	html body #id-container { width: 100%; }
 	html body #id-right { padding-left: 0 !important; margin-left: 0; }
 
@@ -28,19 +23,17 @@
 		transition-delay: 0s, 0s;
 	}
 	html body .side-nav #id-left { position: static; top: auto !important; border: 0; padding-bottom: 24px; }
-	/* easier to touch */
 	html body .side-nav div.vmenu div.menu_titre :is(a.vmenu, span.vmenu) { padding-top: 11px; padding-bottom: 11px; }
 	html body .side-nav div.vmenu div.menu_contenu :is(a.vsmenu, span.vsmenu) { padding-top: 10px; padding-bottom: 10px; }
 	html body .side-nav div.vmenu button.n-chev { width: 40px; height: 40px; right: 2px; }
 
-	/* ---------- Veil over the page while the drawer is open ---------- */
+	/* ---------- Veil ---------- */
 	html body:not(.sidebar-collapse):has(.side-nav) { overflow: hidden; }
 	html body:not(.sidebar-collapse):has(.side-nav)::after {
 		content: ""; position: fixed; inset: 0; z-index: 1099;
 		background: rgba(15,23,42,.5);
-		cursor: pointer; /* without it, iOS sends no click */
+		cursor: pointer; /* iOS sends no click without it */
 	}
-	/* a search list opened from the drawer is drawn in <body> */
 	html body:not(.sidebar-collapse) .select2-container--open { z-index: 1101; }
 }
 @media (prefers-reduced-motion: reduce) {
