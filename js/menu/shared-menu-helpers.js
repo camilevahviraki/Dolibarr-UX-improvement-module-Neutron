@@ -1,19 +1,17 @@
 /**
  * \file       htdocs/custom/neutron/js/menu/shared-menu-helpers.js
- * \brief      Shared by the menu scripts. Loaded on every page, before the others:
- *             Neutron.active is true only with the "neutron" theme, and each script checks it.
+ * \brief      Shared by the menu scripts, loaded first.
  */
 (function () {
 	'use strict';
 
 	var N = window.Neutron = window.Neutron || {};
 
-	// The style sheets are declared before the module scripts in the page head
 	N.active = !!document.querySelector('link[href*="/theme/neutron/style.css.php"]');
-	// Under this width the menu is a drawer: same limit as the *-small-screens.css.php files
+	// Same limit as the *-small-screens.css.php files
 	N.desktop = window.matchMedia('(min-width: 1025px)');
-	N.root = new URL('../../../../', document.currentScript.src).href; // htdocs
-	N.CLOSED = 'sidebar-collapse'; // Dolibarr class on <body>
+	N.root = new URL('../../../../', document.currentScript.src).href;
+	N.CLOSED = 'sidebar-collapse';
 	N.PEEK = 'n-menu-peek';
 	N.TITLES = 'div.vmenu div.menu_titre';
 
@@ -29,12 +27,10 @@
 		return el.textContent.replace(/\s+/g, ' ').trim();
 	};
 
-	// A text of translations.js.php, in the language of the page. The English one if that script did not run.
 	N.t = function (name, english) {
 		return (N.texts && N.texts[name]) || english;
 	};
 
-	// Storage can be blocked by the browser: the menu then works without memory
 	function storage(name) {
 		return {
 			get: function (key) {
