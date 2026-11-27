@@ -1,12 +1,12 @@
 <?php
 /**
  * \file       htdocs/custom/neutron/theme/neutron/md-overrides/style.css.php/tables.css.php
- * \brief      Lists: panel, headers, rows, totals, row checkboxes, pagination and scrollbars.
+ * \brief      Lists: panel, headers, rows, totals, row checkboxes, pagination, scrollbars and small screens.
  *             Overrides htdocs/theme/md/style.css.php.
  */
 ?>
 
-/* ---------- A list is a rounded panel ---------- */
+/* ---------- Panel ---------- */
 html body table.liste, html body table.formdoc,
 html body table.noborder:not(.paymenttable, .margintable, .tableforcontact),
 html body div.noborder:not(.paymenttable, .margintable, .tableforcontact) {
@@ -17,14 +17,13 @@ html body div.noborder:not(.paymenttable, .margintable, .tableforcontact) {
 }
 html body :is(table.liste, table.formdoc, table.noborder) { border-collapse: separate; border-spacing: 0; }
 
-/* The panel does not clip (the column selector must overflow it): round the corner cells instead */
+/* The column selector must overflow the panel */
 html body table.liste > :is(thead, tbody):first-of-type > tr:first-child > :is(th, td):first-child { border-top-left-radius: var(--n-radius); }
 html body table.liste > :is(thead, tbody):first-of-type > tr:first-child > :is(th, td):last-child { border-top-right-radius: var(--n-radius); }
 html body table.liste > tbody:last-of-type > tr:last-child > td:first-child { border-bottom-left-radius: var(--n-radius); }
 html body table.liste > tbody:last-of-type > tr:last-child > td:last-child { border-bottom-right-radius: var(--n-radius); }
 
-/* ---------- Header: dark, bold, not in capitals ---------- */
-/* !important: md styles the header cells with !important in several places */
+/* ---------- Header ---------- */
 html body :is(table, div) tr.liste_titre > :is(th, td), html body table th.liste_titre, html body table td.liste_titre,
 html body tr.liste_titre_sel > th {
 	padding: 10px 12px;
@@ -35,14 +34,11 @@ html body tr.liste_titre_sel > th {
 	font-family: var(--n-font); font-size: 13px; font-weight: 600; letter-spacing: 0; text-transform: none;
 }
 html body tr.liste_titre a, html body th.liste_titre a { color: var(--n-ink) !important; font-family: var(--n-font); font-weight: 600 !important; }
-/* filters above a list: md draws a thick dark line over them */
 html body div.liste_titre.liste_titre_bydiv {
 	border-top: 1px solid var(--n-border) !important;
 	border-radius: var(--n-radius) var(--n-radius) 0 0;
 }
-/* sorted column */
 html body th.liste_titre_sel, html body th.liste_titre_sel a { font-weight: 700 !important; }
-/* row of the search fields */
 html body tr.liste_titre_filter > :is(td, th) { background: var(--n-surface) !important; }
 html body table.dataTable thead th { background: var(--n-surface-2); border-bottom: 1px solid var(--n-border); }
 
@@ -56,15 +52,12 @@ html body tr.oddeven:hover > td { background: var(--n-surface-2); }
 html body tr.oddeven:hover > td:first-child { box-shadow: inset 2px 0 0 var(--n-accent); }
 html body :is(td.right, td.nowrap, .amount, .nowraponall) { font-variant-numeric: tabular-nums; }
 
-/* totals and group rows */
 html body tr.liste_total > :is(td, th), html body tr.liste_titre_sel > td { background: var(--n-surface-2) !important; border-top: 1px solid var(--n-border); font-weight: 600; }
 html body tr.trforbreak > :is(td, th) { background: var(--n-accent-soft) !important; color: var(--n-accent-strong); }
 
-/* ---------- Row checkboxes: in line with the "select all" box of the header ---------- */
-/* The column is on the left or on the right depending on the list and on the settings: match it by content */
+/* ---------- Row checkboxes ---------- */
 html body table.liste th.liste_titre.maxwidthsearch:has(#checkforselects),
 html body table.liste td.actioncolumn, html body table.liste td:has(> input.checkforselect) {
-	/* !important: md centres these cells with !important */
 	text-align: right !important;
 	padding-left: 4px !important; padding-right: 6px !important;
 }
@@ -75,17 +68,45 @@ html body :is(input.checkforselect, input.checkforaction), html body :is(td.nowr
 html body div.pagination li > a, html body div.pagination li > span.inactive, html body ul.pagination li > a {
 	padding: 4px 9px;
 	background: var(--n-surface); color: var(--n-ink-2);
-	border: 1px solid var(--n-border); border-radius: 6px !important; /* md squares the middle ones with !important */
+	border: 1px solid var(--n-border); border-radius: 6px !important;
 }
 html body div.pagination li a:hover { background: var(--n-accent-soft); color: var(--n-accent-strong); border-color: var(--n-accent-ring); }
 html body div.pagination li.active a, html body div.pagination li .active a {
 	background: var(--n-accent) !important; border-color: var(--n-accent) !important; color: var(--n-button-text) !important;
 }
 
-/* ---------- Thin scrollbars (page, tables, lists) ---------- */
+/* ---------- Scrollbars ---------- */
 * { scrollbar-width: thin; scrollbar-color: var(--n-border-strong) transparent; }
 *::-webkit-scrollbar { width: 8px; height: 8px; }
 *::-webkit-scrollbar-track { background: transparent; }
 *::-webkit-scrollbar-thumb { background: var(--n-border-strong); border: 2px solid transparent; border-radius: 8px; background-clip: content-box; }
 *::-webkit-scrollbar-thumb:hover { background: var(--n-muted); background-clip: content-box; }
 *::-webkit-scrollbar-button { display: none; width: 0; height: 0; }
+
+/* ---------- Wide lists ---------- */
+/* Keeps the hidden select2 fields inside the scroll area */
+html body :is(div.div-table-responsive, div.div-table-responsive-no-min) { position: relative; }
+
+/* ---------- Title bar on tablets and phones ---------- */
+@media screen and (max-width: 1024px) {
+	html body table.table-fiche-title, html body table.table-fiche-title > tbody { display: block; box-sizing: border-box; width: 100%; }
+	html body table.table-fiche-title > tbody > tr { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; height: auto !important; }
+	html body table.table-fiche-title > tbody > tr > td { display: block; width: auto !important; height: auto !important; }
+	html body table.table-fiche-title > tbody > tr > td.col-title { flex: 1 1 0; min-width: 0; }
+	html body table.table-fiche-title .col-title div.titre { white-space: normal; }
+	html body table.table-fiche-title > tbody > tr > td.col-right { margin-left: auto; max-width: 100%; }
+	html body table.table-fiche-title td.col-right :is(div.pagination ul, ul.pagination) { display: flex; flex-wrap: wrap; justify-content: flex-end; }
+	html body table.table-fiche-title > tbody > tr > td.col-center { order: 1; flex-basis: 100%; }
+	html body table.table-fiche-title td.col-center, html body table.table-fiche-title td.col-center > div { line-height: 0; }
+	html body table.table-fiche-title td.col-center .select2-container { line-height: normal; }
+	html body table.table-fiche-title td.col-center span.select2-container { max-width: 100% !important; }
+}
+
+/* ---------- Filters on phones ---------- */
+@media screen and (max-width: 600px) {
+	html body div.liste_titre.liste_titre_bydiv > div:is(.divsearchfield, .divfilteralone) { box-sizing: border-box; display: flex; width: 100%; padding-right: 8px; }
+	html body div.liste_titre.liste_titre_bydiv div:is(.divsearchfield, .divfilteralone) > span:has(.select2-container),
+	html body div.liste_titre.liste_titre_bydiv div:is(.divsearchfield, .divfilteralone) > span.select2-container { flex: 1; min-width: 0; }
+	html body div.liste_titre.liste_titre_bydiv div:is(.divsearchfield, .divfilteralone) span.select2-container { width: 100% !important; max-width: 100% !important; }
+	html body div.liste_titre.liste_titre_bydiv div:is(.divsearchfield, .divfilteralone) .select2-search__field { width: 100% !important; }
+}
