@@ -38,7 +38,7 @@ expected and what you see. A screenshot helps: hide personal and company data fi
   [rules for the styles](docs/styles.md#rules-for-the-styles).
 - Prefer sizes that follow the screen (percentages, `vw`) to fixed widths.
 - The menus of tablets and phones start at 1024px and below. This limit is written in `topbar.css`,
-  `sidebar-desktop.css`, `topbar-small-screens.css`, `sidebar-small-screens.css`, `modules-sheet.css` and
+  `sidebar-desktop.css`, `topbar-small-screens.css`, `sidebar-small-screens.css`, `modules-sheet.css`, `tabs-sheet.css` and
   `js/menu/shared-menu-helpers.js`: change them together. The forms have their own limits, in `forms.css.php`.
 
 ### Scripts
