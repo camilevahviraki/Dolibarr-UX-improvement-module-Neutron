@@ -27,6 +27,7 @@ htdocs/custom/neutron/
 │       │   ├── sidebar-small-screens.css      left menu drawer of tablets and phones
 │       │   ├── titles.css                     page and section titles
 │       │   ├── tabs.css                       tabs
+│       │   ├── tabs-sheet.css                 tablets and phones: tabs in a sheet from the bottom
 │       │   ├── tables.css                     lists, headers, checkboxes, pagination, scrollbars
 │       │   ├── forms.css                      fields, selects, radios, dates
 │       │   ├── record.css                     record cards
@@ -60,6 +61,8 @@ htdocs/custom/neutron/
 │   ├── collapsible-sections.js       section arrows and sub entries
 │   ├── sidebar-open-close.js         open, icon bar, hover preview, saved state, drawer
 │   └── modules-sheet.js              tablets and phones: modules in a sheet from the bottom
+├── js/tabs/
+│   └── tabs-sheet.js                 tablets and phones: tabs in a sheet from the bottom
 ├── fonts/                            Poppins and its license
 ├── img/                              images of the module
 ├── admin/
