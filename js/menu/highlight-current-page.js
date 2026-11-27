@@ -1,8 +1,6 @@
 /**
  * \file       htdocs/custom/neutron/js/menu/highlight-current-page.js
  * \brief      Highlight of the current page in the left menu.
- *
- * The page reloads on every click, so the last clicked entry is kept in sessionStorage.
  */
 (function () {
 	'use strict';
@@ -13,7 +11,7 @@
 	}
 
 	var KEY = 'neutron_menu_entry'; // {"id": "<section>|<entry>", "href": "..."} of the current entry
-	var CLICKED = 'neutron_menu_clicked'; // set by a click, read once by the next page
+	var CLICKED = 'neutron_menu_clicked'; // set by a click, read by the next page
 	var IGNORED = ['token', 'theme', 'optioncss', 'page', 'sortfield', 'sortorder'];
 
 	function sameOrigin(href) {
@@ -25,9 +23,7 @@
 		}
 	}
 
-	// Score of a link against the current page. 0 = not this page.
-	// Same file is required, and every parameter of the link must match the current address
-	// (menu parameters may be absent or empty in the current address). More matching parameters = better.
+	// 0 = not this page. Menu parameters may be missing from the address.
 	function score(a) {
 		var u = sameOrigin(a.getAttribute('href'));
 		var here = new URL(window.location.href);
@@ -50,7 +46,6 @@
 		return ok ? s : 0;
 	}
 
-	// The menu is flat: the section of an entry is the closest previous section name
 	function sectionOf(node) {
 		while (node && !node.classList.contains('menu_titre')) {
 			node = node.previousElementSibling;
@@ -58,7 +53,7 @@
 		return node;
 	}
 
-	// Name of an entry: its section and its own text. Several entries can share one address, not one name.
+	// Several entries can share one address
 	function entryId(a) {
 		var node = a.closest('.menu_titre, .menu_contenu');
 		var isTitle = node && node.classList.contains('menu_titre');
@@ -96,14 +91,11 @@
 	var clicked = !!N.session.get(CLICKED);
 	N.session.remove(CLICKED);
 
-	// Marks the one entry of the current page. The entry just clicked wins, even if its page redirects
-	// elsewhere. Without a click: the best match of the address (the last entry when it is as good),
-	// and failing that the last entry.
+	// The clicked entry wins, even if its page redirects elsewhere
 	N.markCurrent = function () {
 		Array.prototype.forEach.call(document.querySelectorAll('div.vmenu .n-current, div.vmenu .n-current-parent'), function (el) {
 			el.classList.remove('n-current', 'n-current-parent');
 		});
-		// Entries first: when an entry and a section name match the same page, the entry wins
 		var links = Array.prototype.slice.call(document.querySelectorAll('div.vmenu a.vsmenu[href]'))
 			.concat(Array.prototype.slice.call(document.querySelectorAll(N.TITLES + ' a.vmenu[href]')));
 		var last = savedEntry(links);
@@ -128,10 +120,8 @@
 	N.ready(function () {
 		N.markCurrent();
 
-		// Remember the clicked entry before the page reloads (also for the entries added later)
 		document.addEventListener('click', function (ev) {
 			var a = ev.target.closest('div.vmenu a.vsmenu[href], ' + N.TITLES + ' a.vmenu[href]');
-			// Not a click handled here (icon bar), nor a new tab asked with a modifier key
 			if (a && !ev.defaultPrevented && !ev.ctrlKey && !ev.metaKey && !ev.shiftKey) {
 				save(a);
 				N.session.set(CLICKED, '1');
