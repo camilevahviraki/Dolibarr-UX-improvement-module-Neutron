@@ -52,6 +52,7 @@ class modNeutron extends DolibarrModules
 				'/neutron/js/menu/sidebar-open-close.js',
 				'/neutron/js/menu/modules-sheet.js',
 				'/neutron/js/tabs/tabs-sheet.js',
+				'/neutron/js/tooltips/tooltip-pointer.js',
 			),
 		);
 
