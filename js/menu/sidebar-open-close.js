@@ -1,17 +1,6 @@
 /**
  * \file       htdocs/custom/neutron/js/menu/sidebar-open-close.js
- * \brief      Open and closed menu. Computers: icon bar, hover preview, tooltips and saved state.
- *             Tablets and phones: drawer over the page.
- *
- * On computers:
- * - The menu is open by default. A click on the toggle opens it or reduces it to an icon bar; the choice is
- *   kept in localStorage as "true" (open) or "false" (closed).
- * - Hovering the toggle while closed grows the menu over the page and the top bar (the content does not move),
- *   until the pointer leaves the toggle and the menu.
- * - Hovering an icon of the bar shows the name of its section. Clicking it opens the menu over the page, with
- *   that section highlighted and the only one unfolded, until a click outside or the Escape key. Not saved.
- * - Hovering the toggle shows what it does.
- * On tablets and phones the drawer is closed on each page; a tap outside of it or the Escape key closes it.
+ * \brief      Left menu: icon bar, hover preview and saved state on computers, drawer below.
  */
 (function () {
 	'use strict';
@@ -23,7 +12,6 @@
 
 	var OPEN = 'neutron_menu_open';
 
-	// Computers: the saved state, open by default (the website editor stays closed). Smaller screens: closed.
 	function applyState() {
 		if (!N.desktop.matches) {
 			document.body.classList.add(N.CLOSED);
@@ -32,8 +20,7 @@
 		}
 	}
 
-	// Dolibarr closes the menu of themes other than md on each page. This script runs in <head>: apply the
-	// state as soon as <body> exists, so that the menu does not flash.
+	// In <head>: applied as soon as <body> exists, so that the menu does not flash
 	function restoreState() {
 		new MutationObserver(function (changes, observer) {
 			if (document.body) {
@@ -51,7 +38,6 @@
 		}
 
 		document.addEventListener('click', function (ev) {
-			// The search list of the menu is drawn outside of it
 			if (!N.desktop.matches && !body.classList.contains(N.CLOSED) &&
 					!menu.contains(ev.target) && !ev.target.closest('li.menuhider, .select2-container')) {
 				close();
@@ -64,14 +50,12 @@
 			}
 		});
 
-		// The window crosses the width limit: end any preview, then take the state of the new size
 		N.desktop.addEventListener('change', function () {
 			body.classList.remove(N.PEEK);
 			applyState();
 		});
 	}
 
-	// A small label beside an element, drawn in <body> so that the menu does not clip it
 	function createTip(content, left, anchor) {
 		var box = anchor.getBoundingClientRect();
 		var tip = document.createElement('div');
@@ -87,21 +71,20 @@
 	function setupToggle(toggle, menu) {
 		var body = document.body;
 		var timer = null;
-		var held = false; // preview opened by a click on an icon: it stays until closed on purpose
-		var restore = null; // puts the highlight of the current page back
+		var held = false;
+		var restore = null;
 
 		function stay() {
 			window.clearTimeout(timer);
 		}
 
-		// Highlights a section opened from the icon bar instead of the entry of the current page
 		function highlight(title, link) {
 			var inside = false;
 			for (var n = title.nextElementSibling; n && !n.classList.contains('menu_titre'); n = n.nextElementSibling) {
 				inside = inside || n.classList.contains('n-current');
 			}
 			if (inside || link.classList.contains('n-current')) {
-				return; // the current page is in this section: nothing to move
+				return;
 			}
 			var marked = Array.prototype.map.call(menu.querySelectorAll('.vmenu.n-current, .vsmenu.n-current, .vmenu.n-current-parent'), function (el) {
 				var name = el.classList.contains('n-current') ? 'n-current' : 'n-current-parent';
@@ -125,14 +108,12 @@
 			body.classList.remove(N.PEEK);
 		}
 
-		// Short delay to move between the toggle and the menu
 		function leave() {
 			stay();
 			if (held || !body.classList.contains(N.PEEK)) {
 				return;
 			}
 			timer = window.setTimeout(function () {
-				// A search list opened from the menu is drawn outside of it: wait until it is closed
 				if (document.querySelector('.select2-container--open')) {
 					leave();
 				} else {
@@ -151,15 +132,12 @@
 		menu.addEventListener('mouseenter', stay);
 		menu.addEventListener('mouseleave', leave);
 
-		// Head of the preview, over the left part of the top bar: moving over it keeps the preview
 		var head = document.createElement('div');
 		head.className = 'n-peek-head';
 		toggle.closest('#id-top').appendChild(head);
 		head.addEventListener('mouseenter', stay);
 		head.addEventListener('mouseleave', leave);
 
-		// A click on an icon of a section with entries opens the menu over the page, on that section.
-		// A section without entries, or a click with a modifier key, follows the link as usual.
 		menu.addEventListener('click', function (ev) {
 			var link = ev.target.closest('.menu_titre.n-has-children .vmenu');
 			var bar = body.classList.contains(N.CLOSED) && !body.classList.contains(N.PEEK);
@@ -179,7 +157,6 @@
 		});
 
 		document.addEventListener('click', function (ev) {
-			// The search list of the menu is drawn outside of it
 			if (held && !menu.contains(ev.target) && !ev.target.closest('li.menuhider, .n-peek-head, .select2-container')) {
 				endPreview();
 			}
@@ -191,14 +168,13 @@
 			}
 		});
 
-		// Capture phase: runs before the Dolibarr handler that toggles the class
+		// Capture phase: before the Dolibarr handler
 		document.addEventListener('click', function (ev) {
 			if (!ev.target.closest('li.menuhider')) {
 				return;
 			}
 			ev.preventDefault();
 			endPreview();
-			// The choice made on a computer is kept; the drawer is not
 			if (N.desktop.matches) {
 				window.setTimeout(function () {
 					N.local.set(OPEN, body.classList.contains(N.CLOSED) ? 'false' : 'true');
@@ -268,7 +244,6 @@
 		toggle.addEventListener('mouseleave', hide);
 		toggle.addEventListener('focusin', show);
 		toggle.addEventListener('focusout', hide);
-		// After a click the state has changed: update the text
 		toggle.addEventListener('click', function () {
 			window.setTimeout(show, 0);
 		});
