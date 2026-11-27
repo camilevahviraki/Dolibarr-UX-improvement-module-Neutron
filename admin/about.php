@@ -13,11 +13,11 @@
  * \brief      About page of the module Neutron.
  */
 
+require_once dirname(__DIR__).'/lib/dolibarr-root.php';
 $res = 0;
-if (file_exists('../../../main.inc.php')) {
-	$res = include '../../../main.inc.php';
-} elseif (file_exists('../../main.inc.php')) {
-	$res = include '../../main.inc.php';
+$neutronroot = neutronDolibarrRoot();
+if ($neutronroot !== '') {
+	$res = include $neutronroot.'/main.inc.php';
 }
 if (!$res) {
 	die('Include of main fails');
