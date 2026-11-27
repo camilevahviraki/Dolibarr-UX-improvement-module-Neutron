@@ -9,6 +9,8 @@ Install first: see the [README](../README.md#install).
 | 1025px and more | Modules, with help, search and user at the right | Column, open or reduced to icons (the choice is kept) |
 | 1024px and less | Menu button, current module, **Modules** button, search and user | Drawer over the page, closed on each page |
 
+Tabs show the current one, and a **Tabs** button that lists them all from the bottom, from 1024px down.
+
 Forms have one label and its field per line from 1200px down, and the label above the field from 600px down.
 
 ## Colors
