@@ -1,0 +1,92 @@
+/**
+ * \file       htdocs/custom/neutron/theme/neutron/md-overrides/style.css.php/sidebar-desktop.css
+ * \brief      Left menu on computers: full height, icon bar and hover preview. Not loaded for print.
+ *             Overrides htdocs/theme/md/style.css.php.
+ */
+
+.n-peek-head { display: none; }
+
+@media screen and (min-width: 1025px) {
+	/* ---------- Full height column ---------- */
+	html body:has(.side-nav)::before {
+		content: ""; position: fixed; top: 0; left: 0; z-index: 90;
+		box-sizing: border-box; width: var(--n-side-w); height: var(--n-top-h);
+		background: var(--n-side-bg); border-right: 1px solid var(--n-side-line);
+	}
+	html body .side-nav { position: fixed; top: var(--n-top-h); bottom: 0; overflow-x: hidden; overflow-y: auto; transition: width .24s ease; transition-delay: 0s; }
+	html body .side-nav #id-left { top: auto !important; }
+	html body:has(.side-nav) #id-top.side-nav-vert { margin-left: var(--n-side-w); }
+	html body:has(.side-nav) #id-right { padding-left: calc(var(--n-side-w) + 23px) !important; }
+
+	html body:has(.side-nav) #id-top li#mainmenutd_menu {
+		position: fixed; top: 0; left: 0; z-index: 2;
+		display: flex; align-items: center; justify-content: center;
+		width: var(--n-rail-w); height: var(--n-top-h);
+		background: transparent; box-shadow: none; opacity: 1;
+	}
+	html body:has(.side-nav) #id-top li#mainmenutd_menu :is(a, span) { color: var(--n-side-icon) !important; }
+	html body:has(.side-nav) #id-top li#mainmenutd_menu:hover :is(a, span) { color: var(--n-side-strong) !important; }
+
+	/* ---------- Closed ---------- */
+	html body.sidebar-collapse:has(.side-nav)::before { width: var(--n-rail-w); }
+	html body.sidebar-collapse:has(.side-nav) #id-top.side-nav-vert { margin-left: var(--n-rail-w); }
+	html body.sidebar-collapse:has(.side-nav) #id-right { padding-left: calc(var(--n-rail-w) + 9px) !important; }
+	html body.sidebar-collapse .side-nav { display: block; width: var(--n-rail-w); }
+
+	/* ---------- Icon bar ---------- */
+	html body.sidebar-collapse:not(.n-menu-peek) .side-nav div.vmenu { padding: 0 8px; }
+	html body.sidebar-collapse:not(.n-menu-peek) .side-nav div.vmenu :is(.menu_contenu, button.n-chev, .blockvmenubookmarks),
+	html body.sidebar-collapse:not(.n-menu-peek) .side-nav :is(#blockvmenuhelp, .blockvmenuhelp) { display: none; }
+	html body.sidebar-collapse:not(.n-menu-peek) .side-nav div.vmenu div.menu_titre { margin: 4px 0; }
+	html body.sidebar-collapse:not(.n-menu-peek) .side-nav div.vmenu div.menu_titre :is(a.vmenu, span.vmenu) {
+		justify-content: center; gap: 0; height: 40px; padding: 0; overflow: hidden; font-size: 0;
+	}
+	html body.sidebar-collapse:not(.n-menu-peek) .side-nav div.vmenu div.menu_titre .vmenu [class*="fa-"] { width: auto; margin: 0; padding: 0; font-size: 17px; }
+	html body.sidebar-collapse:not(.n-menu-peek) .side-nav div.vmenu div.menu_titre .vmenu img { width: 18px; margin: 0; }
+	html body.sidebar-collapse:not(.n-menu-peek) .side-nav div.vmenu div.menu_titre .vmenu:not(:has([class*="fa-"], img))::before {
+		content: "\f07b"; font: 900 17px "Font Awesome 5 Free";
+	}
+	html body.sidebar-collapse:not(.n-menu-peek) .side-nav div.vmenu div.menu_titre .vmenu.n-current-parent { background: var(--n-active); }
+	html body.sidebar-collapse:not(.n-menu-peek) .side-nav div.vmenu div.menu_titre .vmenu.n-current-parent [class*="fa-"] { color: var(--n-active-text) !important; }
+	html body.sidebar-collapse:not(.n-menu-peek) .side-nav .blockvmenusearch :is(.select2-container, .select2-selection) { width: 40px !important; }
+	html body.sidebar-collapse:not(.n-menu-peek) .side-nav .blockvmenusearch .select2-selection__rendered { display: flex; align-items: center; justify-content: center; padding: 0; }
+	html body.sidebar-collapse:not(.n-menu-peek) .side-nav .blockvmenusearch .select2-selection__arrow { display: none; }
+	html body.sidebar-collapse:not(.n-menu-peek) .side-nav .blockvmenusearch .select2-selection__placeholder { font-size: 0; }
+	html body.sidebar-collapse:not(.n-menu-peek) .side-nav .blockvmenusearch .select2-selection__placeholder .fa { margin: 0; padding: 0; font-size: 16px; }
+
+	/* ---------- Hover preview ---------- */
+	html body.sidebar-collapse.n-menu-peek .side-nav {
+		width: var(--n-side-w); z-index: 1001;
+		box-shadow: var(--n-shadow-lg); clip-path: inset(0 -32px 0 0);
+	}
+	html body.sidebar-collapse.n-menu-peek .side-nav #id-left { width: var(--n-side-w) !important; max-width: none !important; }
+	html body #id-top .n-peek-head {
+		display: block; position: fixed; top: 0; left: 0; z-index: 1; visibility: hidden;
+		width: var(--n-rail-w); height: var(--n-top-h); background: var(--n-side-bg);
+		transition: width .24s ease, visibility 0s .24s;
+	}
+	html body.sidebar-collapse.n-menu-peek #id-top .n-peek-head {
+		visibility: visible; width: var(--n-side-w); transition: width .24s ease;
+		box-shadow: var(--n-shadow-lg); clip-path: inset(0 -32px 0 0);
+	}
+	html body.sidebar-collapse.n-menu-peek .side-nav div.vmenu :is(.menu_titre, .menu_contenu) { animation: n-menu-text .26s ease .08s both; }
+	html body.sidebar-collapse.n-menu-peek .side-nav div.vmenu > :nth-child(2) :is(.menu_titre, .menu_contenu) { animation-delay: .12s; }
+	html body.sidebar-collapse.n-menu-peek .side-nav div.vmenu > :nth-child(3) :is(.menu_titre, .menu_contenu) { animation-delay: .16s; }
+	html body.sidebar-collapse.n-menu-peek .side-nav div.vmenu > :nth-child(n+4) :is(.menu_titre, .menu_contenu) { animation-delay: .2s; }
+
+	/* ---------- Tooltip ---------- */
+	.n-rail-tip {
+		position: fixed; z-index: 1100; transform: translateY(-50%); pointer-events: none;
+		padding: 6px 10px; border-radius: 6px; white-space: nowrap;
+		background: var(--n-side-card); color: var(--n-side-strong); box-shadow: var(--n-shadow-lg);
+		font-size: 12.5px; font-weight: 500;
+	}
+}
+@keyframes n-menu-text {
+	from { opacity: 0; transform: translateX(-12px); }
+	to { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+	html body .side-nav, html body #id-top .n-peek-head { transition: none !important; }
+	html body .side-nav div.vmenu :is(.menu_titre, .menu_contenu) { animation: none !important; }
+}

@@ -4,6 +4,8 @@ Where everything is. The rules for the files that override `md` are in [styles.m
 
 ## Full structure
 
+Each `<name>.css` comes with a `<name>.css.php` of the same name, which loads it. The tree shows the `.css` only.
+
 ```
 htdocs/custom/neutron/
 ├── core/modules/
@@ -15,38 +17,39 @@ htdocs/custom/neutron/
 │       ├── index.php                 loads the folders below, in the order of md
 │       ├── style.css.php/            overrides md/style.css.php
 │       │   ├── index.php
-│       │   ├── tokens.css.php        variables of Neutron and of md
-│       │   ├── fonts.css.php         font files and font rule
-│       │   ├── topbar.css.php        top bar, login block, menu toggle
-│       │   ├── sidebar.css.php       left menu, icon bar, hover preview, search box
-│       │   ├── topbar-small-screens.css.php   top bar of tablets and phones
-│       │   ├── modules-sheet.css.php          their top bar entries, in a sheet from the bottom
-│       │   ├── sidebar-small-screens.css.php  left menu drawer of tablets and phones
-│       │   ├── titles.css.php        page and section titles
-│       │   ├── tabs.css.php          tabs
-│       │   ├── tables.css.php        lists, headers, checkboxes, pagination, scrollbars
-│       │   ├── forms.css.php         fields, selects, radios, dates
-│       │   ├── record.css.php        record cards
-│       │   ├── cards.css.php         boxes and setup cards
-│       │   ├── popups.css.php        tooltips, notifications, messages, dialogs
-│       │   └── dark.css.php          dark mode for this md file
+│       │   ├── tokens.css                     variables of Neutron and of md
+│       │   ├── fonts.css                      font files and font rule
+│       │   ├── topbar.css                     top bar, login block, menu toggle
+│       │   ├── sidebar.css                    left menu, search box
+│       │   ├── sidebar-desktop.css            full height, icon bar, hover preview
+│       │   ├── topbar-small-screens.css       top bar of tablets and phones
+│       │   ├── modules-sheet.css              their top bar entries, in a sheet from the bottom
+│       │   ├── sidebar-small-screens.css      left menu drawer of tablets and phones
+│       │   ├── titles.css                     page and section titles
+│       │   ├── tabs.css                       tabs
+│       │   ├── tables.css                     lists, headers, checkboxes, pagination, scrollbars
+│       │   ├── forms.css                      fields, selects, radios, dates
+│       │   ├── record.css                     record cards
+│       │   ├── cards.css                      boxes and setup cards
+│       │   ├── popups.css                     tooltips, notifications, messages, dialogs
+│       │   └── dark.css                       dark mode for this md file
 │       ├── badges.inc.php/           overrides md/badges.inc.php
 │       │   ├── index.php
-│       │   ├── badges.css.php
-│       │   └── dark.css.php
+│       │   ├── badges.css
+│       │   └── dark.css
 │       ├── btn.inc.php/              overrides md/btn.inc.php
 │       │   ├── index.php
-│       │   ├── buttons.css.php
-│       │   └── dark.css.php
+│       │   ├── buttons.css
+│       │   └── dark.css
 │       ├── dropdown.inc.php/         overrides md/dropdown.inc.php
 │       │   ├── index.php
-│       │   ├── user-menu.css.php
-│       │   ├── lists.css.php
-│       │   └── dark.css.php
+│       │   ├── user-menu.css
+│       │   ├── lists.css
+│       │   └── dark.css
 │       └── info-box.inc.php/         overrides md/info-box.inc.php
 │           ├── index.php
-│           ├── dashboard.css.php
-│           └── dark.css.php
+│           ├── dashboard.css
+│           └── dark.css
 ├── css/
 │   ├── settings.css.php              default colors on the theme setup page
 │   └── theme-images.css.php          images Dolibarr looks for outside of the module
@@ -92,7 +95,7 @@ htdocs/custom/neutron/
 
 | To add | Do |
 | --- | --- |
-| A concern in an existing folder | Create `<concern>.css.php`, add its line in the folder's `index.php` before `dark` |
+| A concern in an existing folder | Create `<concern>.css` and `<concern>.css.php`, add the line of the latter in the folder's `index.php` before `dark` |
 | The override of another `md` file | Create the folder, its `index.php` and its files, add a line in `md-overrides/index.php` |
 | A script | Create it in `js/<feature>/`, declare it in `modNeutron.class.php`, disable and enable the module |
 
