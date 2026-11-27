@@ -29,3 +29,4 @@
 - Short README with the license, details in docs/, and a contribution guide.
 - Screenshots of the computer, tablet and phone views.
 - Lists: the page no longer scrolls sideways; the bar above a list wraps on tablets and phones.
+- Styles are in .css files, each loaded by a .css.php of the same name.
