@@ -11,3 +11,7 @@ NeutronMenuOpenTip = Cliquer pour réduire le menu en icônes
 # Barre du haut des tablettes et téléphones
 NeutronModules = Modules
 NeutronShowModules = Afficher tous les modules
+
+# Onglets des tablettes et téléphones
+NeutronTabs = Onglets
+NeutronTabsTitle = Onglets de la fiche
