@@ -108,3 +108,16 @@ html body :is(div.div-table-responsive, div.div-table-responsive-no-min) { posit
 	html body div.liste_titre.liste_titre_bydiv div:is(.divsearchfield, .divfilteralone) span.select2-container { width: 100% !important; max-width: 100% !important; }
 	html body div.liste_titre.liste_titre_bydiv div:is(.divsearchfield, .divfilteralone) .select2-search__field { width: 100% !important; }
 }
+
+/* ---------- Setup pages on phones ---------- */
+@media screen and (max-width: 600px) {
+	html body div.tabBar div.divfilteralone.colorbacktimesheet {
+		display: flex; flex-wrap: wrap; align-items: center; gap: 8px; clear: both;
+		float: none; box-sizing: border-box; width: 100%; padding: 10px;
+	}
+	html body div.tabBar div.divfilteralone.colorbacktimesheet > div.divsearchfield { display: flex; align-items: center; gap: 8px; flex: 1 1 100%; margin: 0; padding: 0; }
+	html body div.tabBar div.divfilteralone.colorbacktimesheet > div.divsearchfield :is(input[type=text], span.select2-container) { flex: 1; min-width: 0; width: 100% !important; max-width: 100% !important; }
+	html body div.tabBar div.divfilteralone.colorbacktimesheet > div.divsearchfield .select2-selection { width: 100% !important; max-width: 100% !important; }
+	html body div.tabBar div.div-table-responsive-no-min > table.noborder:not(.liste) { width: 100%; }
+	html body div.tabBar div.div-table-responsive-no-min > table.noborder:not(.liste) :is(td, th) { min-width: 0 !important; white-space: normal !important; overflow-wrap: anywhere; }
+}
