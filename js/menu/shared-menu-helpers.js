@@ -8,7 +8,7 @@
 	var N = window.Neutron = window.Neutron || {};
 
 	N.active = !!document.querySelector('link[href*="/theme/neutron/style.css.php"]');
-	// Same limit as the *-small-screens.css.php files
+	// Same limit as the *-small-screens.css files
 	N.desktop = window.matchMedia('(min-width: 1025px)');
 	N.root = new URL('../../../../', document.currentScript.src).href;
 	N.CLOSED = 'sidebar-collapse';
