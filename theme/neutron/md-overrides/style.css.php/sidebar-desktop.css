@@ -81,6 +81,10 @@
 		background: var(--n-side-card); color: var(--n-side-strong); box-shadow: var(--n-shadow-lg);
 		font-size: 12.5px; font-weight: 500;
 	}
+	.n-rail-tip::before {
+		content: ""; position: absolute; top: 50%; right: 100%; margin-top: -6px;
+		border: 6px solid transparent; border-left: 0; border-right-color: var(--n-side-card);
+	}
 }
 @keyframes n-menu-text {
 	from { opacity: 0; transform: translateX(-12px); }
