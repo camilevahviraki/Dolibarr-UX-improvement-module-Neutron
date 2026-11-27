@@ -5,10 +5,10 @@
  */
 
 if (!defined('DOL_DOCUMENT_ROOT')) {
-	exit; // included by md-overrides/index.php, never called directly
+	exit;
 }
 
-// One file per concern, loaded in this order. Dark mode comes last.
+// Dark mode comes last
 include __DIR__.'/tokens.css.php';
 include __DIR__.'/fonts.css.php';
 include __DIR__.'/topbar.css.php';
