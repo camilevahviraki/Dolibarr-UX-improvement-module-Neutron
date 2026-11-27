@@ -33,4 +33,5 @@
 - Page and section titles: no capitals, larger page titles.
 - Tablets and phones: the current tab, and a button that opens all tabs from the bottom.
 - Phones: setup pages fit the screen, and the name of the current tab is shown in full.
+- Buttons: actions, cancel, delete, refused and title buttons.
 - The theme loads when the module is a link or is stored outside the Dolibarr folder.
