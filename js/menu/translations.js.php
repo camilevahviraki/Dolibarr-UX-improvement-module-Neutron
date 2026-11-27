@@ -56,6 +56,8 @@ $keys = array(
 	'menuOpenTip' => 'NeutronMenuOpenTip',
 	'modules' => 'NeutronModules',
 	'showModules' => 'NeutronShowModules',
+	'tabs' => 'NeutronTabs',
+	'tabsTitle' => 'NeutronTabsTitle',
 );
 $texts = array();
 foreach ($keys as $name => $key) {

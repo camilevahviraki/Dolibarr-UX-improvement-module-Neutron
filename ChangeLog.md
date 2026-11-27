@@ -31,3 +31,5 @@
 - Lists: the page no longer scrolls sideways; the bar above a list wraps on tablets and phones.
 - Styles are in .css files, each loaded by a .css.php of the same name.
 - Page and section titles: no capitals, larger page titles.
+- Tablets and phones: the current tab, and a button that opens all tabs from the bottom.
+- Phones: setup pages fit the screen, and the name of the current tab is shown in full.

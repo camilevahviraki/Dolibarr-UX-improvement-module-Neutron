@@ -19,6 +19,7 @@ include __DIR__.'/modules-sheet.css.php';
 include __DIR__.'/sidebar-small-screens.css.php';
 include __DIR__.'/titles.css.php';
 include __DIR__.'/tabs.css.php';
+include __DIR__.'/tabs-sheet.css.php';
 include __DIR__.'/tables.css.php';
 include __DIR__.'/forms.css.php';
 include __DIR__.'/record.css.php';

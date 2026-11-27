@@ -11,3 +11,7 @@ NeutronMenuOpenTip = Click to reduce the menu to icons
 # Top bar of tablets and phones
 NeutronModules = Modules
 NeutronShowModules = Show all modules
+
+# Tabs of tablets and phones
+NeutronTabs = Tabs
+NeutronTabsTitle = Tabs of this record
