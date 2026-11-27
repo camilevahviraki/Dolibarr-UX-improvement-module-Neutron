@@ -27,7 +27,7 @@ The texts are in `langs/<language>/neutron.lang`. English and French are provide
 
 ## Known limits
 
-- Badges, the dashboard, popups and dark mode are not restyled yet.
+- The dashboard, popups and dark mode are not restyled yet.
 - On a computer screen with many modules, the top bar can take two lines.
 - The module number (513900) is not reserved yet.
 - The browser does not keep the stylesheet in cache while the theme is being built.
