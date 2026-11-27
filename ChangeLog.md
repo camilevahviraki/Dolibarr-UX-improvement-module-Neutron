@@ -28,3 +28,4 @@
 - The texts of the menu scripts are translated through the language files.
 - Short README with the license, details in docs/, and a contribution guide.
 - Screenshots of the computer, tablet and phone views.
+- Lists: the page no longer scrolls sideways; the bar above a list wraps on tablets and phones.
