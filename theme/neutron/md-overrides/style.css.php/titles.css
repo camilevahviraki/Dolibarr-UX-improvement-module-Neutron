@@ -4,4 +4,16 @@
  *             Overrides htdocs/theme/md/style.css.php.
  */
 
+/* ---------- Section titles ---------- */
+html body div.titre {
+	color: var(--n-title-text);
+	font-family: var(--n-font); font-size: 15px; font-weight: 600; letter-spacing: -0.01em; text-transform: none;
+}
+html body div.titre .opacitymedium { font-size: .8em; font-weight: 500; }
 
+/* ---------- Page titles ---------- */
+html body div.fiche > table.table-fiche-title .col-title div.titre,
+html body div.fiche > form > table.table-fiche-title .col-title div.titre {
+	font-size: clamp(18px, 4.5vw, 22px); font-weight: 600; line-height: 1.25; letter-spacing: -0.02em;
+}
+html body div.fiche > table.table-fiche-title:first-child { margin-top: 4px; }
