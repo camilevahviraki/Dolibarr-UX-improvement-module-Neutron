@@ -13,7 +13,6 @@
  * \brief      Setup page of the module Neutron.
  */
 
-// Load Dolibarr environment, from htdocs/custom/neutron/admin
 $res = 0;
 if (file_exists('../../../main.inc.php')) {
 	$res = include '../../../main.inc.php';
@@ -45,7 +44,6 @@ print load_fiche_titre($langs->trans('NeutronSetup'), $linkback, 'title_setup');
 
 print dol_get_fiche_head(neutronAdminPrepareHead(), 'settings', $langs->trans('ModuleNeutronName'), -1, 'fa-columns');
 
-// Options (colors, font, menu behavior) will be added here
 print '<span class="opacitymedium">'.$langs->trans('NeutronSetupIntro').'</span>';
 
 print dol_get_fiche_end();
