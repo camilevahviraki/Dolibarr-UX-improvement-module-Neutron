@@ -40,3 +40,6 @@
 - Select lists: the blank choice reads "Nothing selected".
 - File fields: bordered, with a styled choose button; on phones the upload button goes under the field.
 - Colors: one primary blue, a darker top bar with soft white texts, and a purple help block.
+- Home page cards: a full height colored strip with the create link; the cards take six colors in turn.
+- Widgets and charts find the variables of the theme: the home page no longer fails on "Tickets by type".
+- Home page cards: titles without capitals, smaller links and darker colors.
