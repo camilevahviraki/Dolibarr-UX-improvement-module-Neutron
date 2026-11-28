@@ -18,3 +18,6 @@ NeutronTabsTitle = Tabs of this record
 
 # Select lists
 NeutronNothingSelected = Nothing selected
+
+# Activation
+NeutronThemeFilesNotWritten = Neutron cannot write in %s. Allow the web server to write there, then disable and enable the module: without it, some charts and widgets fail.
