@@ -53,6 +53,12 @@ function neutronDefaultColors()
 		'ok_bg' => '#f0fdf4',
 		'warn_bg' => '#fffbeb',
 		'err_bg' => '#fef2f2',
+		'tile_1' => '#3f566f',
+		'tile_2' => '#3f6052',
+		'tile_3' => '#7d6340',
+		'tile_4' => '#744c55',
+		'tile_5' => '#57526f',
+		'tile_6' => '#3d5e6b',
 	);
 }
 
