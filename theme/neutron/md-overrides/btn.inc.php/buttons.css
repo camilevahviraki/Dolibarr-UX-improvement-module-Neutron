@@ -4,4 +4,80 @@
  *             Overrides htdocs/theme/md/btn.inc.php.
  */
 
+/* ---------- Shape ---------- */
+html body :is(.butAction, .butActionDelete, .butActionRefused, input.button, input[type=submit], input[type=button], button.button, a.button) {
+	border: 1px solid transparent;
+	border-radius: var(--n-radius-sm) !important;
+	box-shadow: var(--n-shadow);
+	font-family: var(--n-font) !important; font-size: 13.5px; font-weight: 500; letter-spacing: 0; text-transform: none !important;
+	transition: transform .1s, box-shadow .15s, background .15s, filter .15s;
+}
+html body :is(.butAction, .butActionDelete, .butActionRefused) { padding: 10px 16px !important; }
+html body :is(input.button, input[type=submit], input[type=button], button.button, a.button) {
+	display: inline-flex; align-items: center; justify-content: center; box-sizing: border-box;
+	height: var(--n-control-h); min-height: var(--n-control-h); padding: 0 16px !important; line-height: 1; vertical-align: middle;
+}
+html body :is(input, button, a).button.small { height: var(--n-control-h-sm); min-height: var(--n-control-h-sm); }
+html body .center > .button + .button, html body .center > input + input { margin-left: 8px; }
 
+/* ---------- Main actions ---------- */
+html body .butAction:not(.butActionDelete, .butActionRefused), html body input.button:not(.button-cancel, .butActionRefused, :disabled) {
+	background: linear-gradient(180deg, color-mix(in srgb, var(--n-accent) 88%, white), var(--n-accent)) !important;
+	border-color: var(--n-accent-strong) !important;
+	color: var(--n-button-text) !important;
+	box-shadow: 0 1px 2px color-mix(in srgb, var(--n-accent-strong) 40%, transparent), inset 0 1px 0 rgba(255,255,255,.18);
+}
+html body .butAction:not(.butActionDelete, .butActionRefused):hover, html body input.button:not(.button-cancel, .butActionRefused, :disabled):hover {
+	box-shadow: var(--n-shadow-lg); filter: brightness(1.06); transform: translateY(-1px);
+}
+
+/* ---------- Cancel ---------- */
+html body#mainbody :is(input, button, a).button.button-cancel.button-cancel, html body#mainbody .button-cancel.button-cancel {
+	background: var(--n-surface) !important;
+	border: 1px solid var(--n-border-strong) !important;
+	color: var(--n-ink-2) !important;
+	box-shadow: none;
+}
+html body#mainbody :is(input, button, a).button.button-cancel.button-cancel:hover, html body#mainbody .button-cancel.button-cancel:hover { background: var(--n-surface-3) !important; filter: none; transform: none; }
+
+/* ---------- Delete ---------- */
+html body :is(.butAction.butActionDelete, a.butActionDelete, span.butActionDelete, input.butActionDelete):not(.butActionRefused) {
+	background: var(--n-surface) !important;
+	border: 1px solid color-mix(in srgb, var(--n-danger) 30%, var(--n-surface)) !important;
+	color: var(--n-danger) !important;
+	box-shadow: none;
+}
+html body :is(.butAction.butActionDelete, a.butActionDelete, span.butActionDelete, input.butActionDelete):not(.butActionRefused):hover { background: var(--n-err-bg) !important; }
+
+/* ---------- Refused and disabled ---------- */
+html body .butActionRefused, html body .butActionRefused:hover, html body#mainbody input.button.button:disabled {
+	background: var(--n-surface-3) !important;
+	border: 1px solid var(--n-border) !important;
+	color: var(--n-muted) !important;
+	box-shadow: none; filter: none; transform: none;
+}
+html body :is(.butActionRefused, .button.disabled, .button:disabled, input[type=submit]:disabled, input[type=button]:disabled) { cursor: default !important; }
+
+/* ---------- Buttons under a card ---------- */
+html body div.tabsAction { gap: 8px; margin: 18px 0 8px; }
+@media screen and (max-width: 600px) {
+	html body div.tabsAction { display: flex; flex-wrap: wrap; }
+	html body div.tabsAction > * { flex: 1 1 calc(50% - 8px); margin: 0; }
+	html body div.tabsAction :is(.butAction, .butActionDelete, .butActionRefused) { display: block; box-sizing: border-box; width: 100%; margin: 0; text-align: center; }
+}
+
+/* ---------- Buttons beside a page title ---------- */
+html body a.btnTitle, html body .btnTitle {
+	display: inline-flex !important; align-items: center; justify-content: center;
+	width: 32px; height: 32px; min-width: 0 !important; margin: 0 0 0 6px !important; padding: 0 !important;
+	border-radius: var(--n-radius-sm) !important; vertical-align: middle;
+}
+html body a.btnTitle:has(.btnTitle-label) { width: auto; padding: 0 12px !important; }
+html body a.btnTitle:hover { background: var(--n-surface-2); }
+html body a.btnTitle.btnTitleSelected { background: var(--n-accent-soft); border-color: var(--n-accent) !important; color: var(--n-accent-strong); }
+html body a.btnTitle :is(.btnTitle-icon, .fa, .fas) { width: auto; margin: 0 !important; padding: 0 !important; font-size: 14px !important; line-height: 1; }
+html body a.btnTitle.btnTitleSelected .btnTitle-icon { color: var(--n-accent-strong) !important; }
+
+@media (prefers-reduced-motion: reduce) {
+	html body :is(.butAction, .button, input[type=submit]) { transition: none; }
+}

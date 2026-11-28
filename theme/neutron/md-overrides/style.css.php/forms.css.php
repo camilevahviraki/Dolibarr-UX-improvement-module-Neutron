@@ -81,3 +81,11 @@ $neutronrow = $neutronform.' > tbody > tr:not(.hideobject, .hidden, .nodisplay)'
 	<?php print $neutronrow; ?> > td:nth-child(even) { padding-top: 4px; }
 	html body div.tabBar { padding: 12px 8px; }
 }
+<?php
+// Text of the blank choice marked by js/forms/blank-choice.js
+$langs->load('neutron@neutron');
+$neutronnothing = html_entity_decode($langs->transnoentitiesnoconv('NeutronNothingSelected'), ENT_QUOTES, 'UTF-8');
+?>
+
+html body .select2-results__option.n-blank-choice::before { content: "<?php print addcslashes($neutronnothing, "\\\"\n\r<"); ?>"; color: var(--n-muted); }
+html body .select2-container--default .select2-results__option--highlighted.n-blank-choice { background: var(--n-accent-soft); }

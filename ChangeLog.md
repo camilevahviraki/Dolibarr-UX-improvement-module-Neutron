@@ -33,4 +33,10 @@
 - Page and section titles: no capitals, larger page titles.
 - Tablets and phones: the current tab, and a button that opens all tabs from the bottom.
 - Phones: setup pages fit the screen, and the name of the current tab is shown in full.
+- Buttons: actions, cancel, delete, refused and title buttons.
 - The theme loads when the module is a link or is stored outside the Dolibarr folder.
+- Badges and statuses: rounded labels.
+- Popups: tooltips with a pointer to their element, notifications, message boxes and dialogs.
+- Select lists: the blank choice reads "Nothing selected".
+- File fields: bordered, with a styled choose button; on phones the upload button goes under the field.
+- Colors: one primary blue, a darker top bar with soft white texts, and a purple help block.

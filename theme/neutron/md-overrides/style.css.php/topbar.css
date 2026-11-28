@@ -25,6 +25,8 @@ html body #id-top li.tmenusel :is(div.tmenucenter, a, a span) { color: var(--n-t
 
 /* ---------- Block at the right ---------- */
 html body #id-top .login_block, html body #id-top .login_block a, html body #id-top #topmenu-login-dropdown a.dropdown-toggle { color: var(--n-bar-text); }
+html body #id-top .login_block :is(a.dropdown-toggle, a.dropdown-toggle span, .login_block_tools > div > a span, .login_block_other a span) { color: var(--n-bar-text) !important; }
+html body #id-top div.login_block div.login_block_other :is(a span, .atoplogin, span.aversion) { color: var(--n-bar-highlight) !important; }
 
 @media screen {
 	html body #id-top.side-nav-vert { margin-left: 0; margin-right: 0; }

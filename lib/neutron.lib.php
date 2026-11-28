@@ -22,9 +22,9 @@
 function neutronDefaultColors()
 {
 	return array(
-		'accent' => '#4f46e5',
-		'link' => '#4338ca',
-		'bar' => '#384547',
+		'accent' => '#097fc3',
+		'link' => '#097fc3',
+		'bar' => '#2c3739',
 		'side_bg' => '#384547',
 		'side_card' => '#263539',
 		'side_hover' => '#3b4a4c',
@@ -33,7 +33,7 @@ function neutronDefaultColors()
 		'side_text' => '#aab5b9',
 		'side_icon' => '#c2cacc',
 		'side_muted' => '#8b9798',
-		'active' => '#3082ff',
+		'active' => '#097fc3',
 		'active_text' => '#ffffff',
 		'top_active' => '#d9dee0',
 		'body' => '#f5f6f8',
@@ -47,7 +47,7 @@ function neutronDefaultColors()
 		'border_strong' => '#cbd5e1',
 		'title_text' => '#0f172a',
 		'row_hover' => '#f8fafc',
-		'row_checked' => '#eef2ff',
+		'row_checked' => '#e9f4fa',
 		'button_text' => '#ffffff',
 		'danger' => '#b91c1c',
 		'ok_bg' => '#f0fdf4',
