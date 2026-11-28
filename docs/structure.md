@@ -13,6 +13,7 @@ htdocs/custom/neutron/
 ├── theme/neutron/
 │   ├── style.css.php                 entry point required by Dolibarr: md, then the overrides
 │   ├── thumb.png                     preview in Setup > Display > Theme
+│   ├── theme_vars.inc.php            variables of the theme read by pages and widgets
 │   └── md-overrides/                 everything that overrides htdocs/theme/md
 │       ├── index.php                 loads the folders below, in the order of md
 │       ├── style.css.php/            overrides md/style.css.php
@@ -74,7 +75,8 @@ htdocs/custom/neutron/
 │   └── about.php
 ├── lib/
 │   ├── dolibarr-root.php             finds the Dolibarr folder
-│   └── neutron.lib.php               default colors, shared PHP functions
+│   ├── neutron.lib.php               default colors, shared PHP functions
+│   └── theme-files.php               file created in htdocs/theme/neutron/
 ├── langs/
 │   ├── en_US/neutron.lang
 │   └── fr_FR/neutron.lang

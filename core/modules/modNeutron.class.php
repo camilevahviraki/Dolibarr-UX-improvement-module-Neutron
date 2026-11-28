@@ -80,6 +80,14 @@ class modNeutron extends DolibarrModules
 	 */
 	public function init($options = '')
 	{
+		global $langs;
+
+		require_once dirname(__DIR__, 2).'/lib/theme-files.php';
+		if (!neutronCreateThemeFiles()) {
+			$langs->load('neutron@neutron');
+			setEventMessages($langs->trans('NeutronThemeFilesNotWritten', neutronThemeFolder()), null, 'warnings');
+		}
+
 		return $this->_init(array(), $options);
 	}
 
@@ -97,6 +105,9 @@ class modNeutron extends DolibarrModules
 			require_once DOL_DOCUMENT_ROOT.'/core/lib/admin.lib.php';
 			dolibarr_set_const($this->db, 'MAIN_THEME', 'eldy', 'chaine', 0, '', $conf->entity);
 		}
+
+		require_once dirname(__DIR__, 2).'/lib/theme-files.php';
+		neutronRemoveThemeFiles();
 
 		return $this->_remove(array(), $options);
 	}
