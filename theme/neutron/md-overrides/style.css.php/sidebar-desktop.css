@@ -24,7 +24,7 @@
 		width: var(--n-rail-w); height: var(--n-top-h);
 		background: transparent; box-shadow: none; opacity: 1;
 	}
-	html body:has(.side-nav) #id-top li#mainmenutd_menu :is(a, span) { color: var(--n-side-icon) !important; }
+	html body:has(.side-nav) #id-top li#mainmenutd_menu :is(a, span) { color: var(--n-bar-icon) !important; }
 	html body:has(.side-nav) #id-top li#mainmenutd_menu:hover :is(a, span) { color: var(--n-side-strong) !important; }
 
 	/* ---------- Closed ---------- */
