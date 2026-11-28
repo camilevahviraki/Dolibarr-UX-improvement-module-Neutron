@@ -5,3 +5,26 @@
  */
 
 
+/* ---------- Cards of the home page: full height colored strip, with the create link ---------- */
+html body .opened-dash-board-wrap .info-box { display: flex; align-items: stretch; overflow: hidden; border-radius: var(--n-radius); }
+html body .opened-dash-board-wrap .info-box .info-box-icon {
+	position: relative; display: flex; flex: 0 0 auto; align-items: center; justify-content: center;
+	align-self: stretch; float: none; height: auto !important; border-radius: 0; filter: none;
+	background: var(--n-tile) !important; color: #fff !important;
+}
+html body .opened-dash-board-wrap .info-box .info-box-content { flex: 1; min-width: 0; margin: 0; }
+html body .opened-dash-board-wrap .info-box .info-box-icon > i, html body .opened-dash-board-wrap .info-box .info-box-icon > i::before { color: #fff !important; }
+html body .opened-dash-board-wrap .infobox-haslink .info-box-icon:hover > i { opacity: .15; }
+html body .opened-dash-board-wrap .info-box .info-box-createlink { color: #fff; }
+html body .opened-dash-board-wrap .info-box .info-box-createlink:focus-visible { opacity: 1; outline: 3px solid #fff; outline-offset: -6px; }
+
+html body .opened-dash-board-wrap .info-box .info-box-title { color: var(--n-title-text); font-size: 13.5px; font-weight: 600; text-transform: none; }
+html body .opened-dash-board-wrap .info-box .info-box-line, html body .opened-dash-board-wrap .info-box .info-box-line :is(a, .info-box-line-text) { font-size: 12px !important; }
+
+/* Cards take the colors in turn: --n-tile-* come from lib/neutron.lib.php */
+html body .opened-dash-board-wrap .box-flex-item:nth-child(6n+1) .info-box-icon { --n-tile: var(--n-tile-1); }
+html body .opened-dash-board-wrap .box-flex-item:nth-child(6n+2) .info-box-icon { --n-tile: var(--n-tile-2); }
+html body .opened-dash-board-wrap .box-flex-item:nth-child(6n+3) .info-box-icon { --n-tile: var(--n-tile-3); }
+html body .opened-dash-board-wrap .box-flex-item:nth-child(6n+4) .info-box-icon { --n-tile: var(--n-tile-4); }
+html body .opened-dash-board-wrap .box-flex-item:nth-child(6n+5) .info-box-icon { --n-tile: var(--n-tile-5); }
+html body .opened-dash-board-wrap .box-flex-item:nth-child(6n+6) .info-box-icon { --n-tile: var(--n-tile-6); }
