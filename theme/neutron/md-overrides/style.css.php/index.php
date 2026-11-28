@@ -25,4 +25,5 @@ include __DIR__.'/forms.css.php';
 include __DIR__.'/record.css.php';
 include __DIR__.'/cards.css.php';
 include __DIR__.'/popups.css.php';
+include __DIR__.'/login.css.php';
 include __DIR__.'/dark.css.php';
