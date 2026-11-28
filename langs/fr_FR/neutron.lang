@@ -18,3 +18,6 @@ NeutronTabsTitle = Onglets de la fiche
 
 # Listes déroulantes
 NeutronNothingSelected = Aucune sélection
+
+# Activation
+NeutronThemeFilesNotWritten = Neutron ne peut pas écrire dans %s. Autorisez le serveur web à y écrire, puis désactivez et activez le module : sans cela, certains graphiques et widgets échouent.
