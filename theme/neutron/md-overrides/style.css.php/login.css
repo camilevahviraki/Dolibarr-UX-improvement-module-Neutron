@@ -1,0 +1,67 @@
+/**
+ * \file       htdocs/custom/neutron/theme/neutron/md-overrides/style.css.php/login.css
+ * \brief      Login page: a dark band behind the upper part of a centered card.
+ *             Overrides htdocs/theme/md/style.css.php.
+ */
+
+/* ---------- Page ---------- */
+html body.bodylogin { background-color: var(--n-body); }
+/* A background image chosen in the setup stays */
+html body.bodylogin:not([style*="background-image"]) .login_center { background: linear-gradient(var(--n-bar) 0 46%, var(--n-body) 46%) !important; }
+html body.bodylogin .login_vertical_align { padding: 24px 16px 48px; }
+html body.bodylogin form#login { padding: 0; font-size: 14px; }
+html body.bodylogin :is(div.login_table_title, a.login_table_title) {
+	max-width: none; padding-bottom: 14px; color: #fff !important; font-family: var(--n-font); font-size: 14px; font-weight: 500; text-shadow: none;
+}
+html body.bodylogin a.login_table_title { padding: 0; }
+html body.bodylogin[style*="background-image"] div.login_table_title { text-shadow: 0 1px 4px rgba(0,0,0,.8); }
+
+/* ---------- Card ---------- */
+html body.bodylogin div.login_table {
+	box-sizing: border-box; width: 100%; max-width: 380px; margin: 0 auto; padding: 28px;
+	background: var(--n-surface); border: 1px solid var(--n-border-strong); border-radius: 14px; box-shadow: var(--n-shadow-lg);
+}
+html body.bodylogin div.login_table br { display: none; }
+html body.bodylogin :is(div#login_left, div#login_right) { display: block; min-width: 0 !important; padding: 0 !important; }
+html body.bodylogin #img_logo { max-width: 200px; margin-bottom: 20px; }
+html body.bodylogin div.login_table :is(.tagtable, .trinputlogin, .tdinputlogin) { display: block; width: 100%; min-width: 0 !important; }
+html body.bodylogin div.login_table .trinputlogin { margin: 0 0 14px; }
+
+/* ---------- Fields ---------- */
+html body.bodylogin div.login_table .tdinputlogin { position: relative; text-align: left; }
+html body.bodylogin div.login_table .tdinputlogin::before { display: block; margin-bottom: 5px; color: var(--n-ink); font-size: 13px; font-weight: 600; }
+html body.bodylogin div.login_table .tdinputlogin > span.fa {
+	position: absolute; bottom: 0; left: 0; z-index: 1; width: 42px; padding: 0;
+	color: var(--n-ink-2); line-height: 44px; text-align: center; pointer-events: none;
+}
+html body.bodylogin div.login_table input:is(#username, #password, #securitycode) {
+	box-sizing: border-box; width: 100% !important; max-width: 100% !important; height: 44px !important; margin: 0 !important; padding: 0 44px 0 42px !important;
+	border: 1.5px solid var(--n-muted) !important; border-radius: var(--n-radius-sm); background-color: var(--n-surface); color: var(--n-ink); font-size: 14px;
+}
+html body.bodylogin div.login_table input#securitycode { width: 175px !important; padding: 0 10px 0 40px !important; }
+html body.bodylogin div.login_table input:is(#username, #password, #securitycode):focus { border-color: var(--n-accent) !important; box-shadow: 0 0 0 3px var(--n-accent-ring) !important; }
+html body.bodylogin div.login_table input:is(#username, #password)::placeholder { color: transparent; }
+
+/* Show or hide the password */
+html body.bodylogin div.login_table #tdpasswordlogin #togglepassword {
+	position: absolute; top: auto; right: 2px; bottom: 0; display: flex; align-items: center; justify-content: center;
+	width: 42px; height: 44px; color: var(--n-ink-2); opacity: 1; cursor: pointer;
+}
+html body.bodylogin #togglepassword .fa::before { visibility: visible; }
+
+/* ---------- Buttons and links ---------- */
+html body.bodylogin div.login_table #login_line2 input[type=submit] { box-sizing: border-box; width: 100%; height: auto !important; min-height: 44px; margin: 6px 0 0; padding-top: 8px; padding-bottom: 8px; font-size: 14px; font-weight: 600; white-space: normal; }
+html body.bodylogin #login-submit-wrapper { margin: 0; }
+html body.bodylogin div.login_table #login_line2 > div.center { margin-top: 16px !important; }
+html body.bodylogin a.alogin, html body.bodylogin a.alogin:hover { color: var(--n-accent-strong) !important; font-family: var(--n-font); font-size: 13px !important; font-weight: 500 !important; }
+html body.bodylogin .loginbuttonexternal { box-sizing: border-box; width: 100%; border: 1.5px solid var(--n-border-strong); border-radius: var(--n-radius-sm); }
+
+/* ---------- Message of the setup ---------- */
+html body.bodylogin .login_main_home { box-sizing: border-box; max-width: 380px !important; margin: 16px auto 0; color: var(--n-ink-2); font-size: 13px; }
+html body.bodylogin .login_main_message { max-width: 380px; margin: 14px auto 0; }
+html body.bodylogin .passwordmessagedesc { color: var(--n-ink-2); opacity: 1; }
+
+@media only screen and (max-width: 600px) {
+	html body.bodylogin div.login_table { padding: 22px 18px; }
+	html body.bodylogin div.login_table_title { font-size: 13px; }
+}
