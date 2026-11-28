@@ -84,6 +84,25 @@ html body :is(.divfilteralone, .divsearchfield) .select2-container--default .sel
 html body :is(.divfilteralone, .divsearchfield) .select2-selection--multiple .select2-selection__rendered { display: flex; align-items: center; flex-wrap: nowrap; margin: 0; padding: 0; }
 html body :is(.divfilteralone, .divsearchfield) .select2-selection--multiple .select2-search__field { padding-top: 0; padding-bottom: 0; line-height: 22px; }
 
+/* ---------- File fields ---------- */
+html body input[type=file] {
+	box-sizing: border-box; max-width: 100%; height: var(--n-control-h); padding: 2px; vertical-align: middle;
+	border: 1px solid var(--n-border-strong) !important; border-radius: var(--n-radius-sm);
+	background: var(--n-surface); color: var(--n-ink-2); font-family: var(--n-font); font-size: 13px; cursor: pointer;
+}
+html body input[type=file]:hover { border-color: var(--n-accent) !important; }
+html body input[type=file]:focus-visible { outline: 3px solid var(--n-accent-ring); outline-offset: 1px; }
+html body input[type=file]::file-selector-button {
+	height: var(--n-control-h-sm); margin: 0 10px 0 0; padding: 0 12px; border: 0; border-radius: 6px;
+	background: var(--n-side-card); color: #fff; font-family: var(--n-font); font-size: 13px; font-weight: 500; cursor: pointer;
+}
+html body input[type=file]:hover::file-selector-button { background: var(--n-accent); }
+
+@media only screen and (max-width: 600px) {
+	html body td:has(> input[type=file]) { white-space: normal !important; }
+	html body td > input[type=file] { width: calc(100vw - 64px) !important; min-width: 0 !important; max-width: 100% !important; margin-bottom: 8px; }
+}
+
 /* ---------- Checkboxes and radios ---------- */
 html body input[type=checkbox], html body input[type=radio] {
 	-webkit-appearance: none; appearance: none;
