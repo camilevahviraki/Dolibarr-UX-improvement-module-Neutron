@@ -21,13 +21,19 @@ hexadecimal value in *Setup > Other setup*, for example `NEUTRON_COLOR_ACCENT` =
 *Setup > Display > Theme* shows the Neutron colors as defaults. Its color fields belong to the themes of Dolibarr:
 use the constants to change Neutron.
 
+## Theme folder in Dolibarr
+
+When enabled, Neutron creates `htdocs/theme/neutron/theme_vars.inc.php`, which widgets and charts read there, and
+removes it when disabled. The web server must be allowed to write in `htdocs/theme/`. The theme list shows "neutron"
+twice; both are the same theme. After an upgrade that replaces `htdocs/`, disable and enable the module.
+
 ## Translations
 
 The texts are in `langs/<language>/neutron.lang`. English and French are provided; other languages show English.
 
 ## Known limits
 
-- The dashboard and dark mode are not restyled yet.
+- On the dashboard only the cards are restyled; dark mode is not restyled yet.
 - On a computer screen with many modules, the top bar can take two lines.
 - The module number (513900) is not reserved yet.
 - The browser does not keep the stylesheet in cache while the theme is being built.
