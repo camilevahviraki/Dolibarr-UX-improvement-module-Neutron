@@ -38,3 +38,5 @@
 - Badges and statuses: rounded labels.
 - Popups: tooltips with a pointer to their element, notifications, message boxes and dialogs.
 - Select lists: the blank choice reads "Nothing selected".
+- File fields: bordered, with a styled choose button; on phones the upload button goes under the field.
+- Colors: one primary blue, a darker top bar with soft white texts, and a purple help block.
